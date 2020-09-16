@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Beijing_data_vis_2 |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-beijing-data-vis-2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Beijing_data_vis_2
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1e000balvgbsixh9u9/" class="article-date">
+  <time datetime="2020-04-29T16:51:04.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Data-Process"><a href="#Data-Process" class="headerlink" title="Data Process"></a>Data Process</h1><h4 id="接下来开始处理数据"><a href="#接下来开始处理数据" class="headerlink" title="接下来开始处理数据"></a>接下来开始处理数据</h4><blockquote>
+<p>Loading Lib</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import re</span><br><span class="line">Import json</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tourism Attractions data clean</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hotSpot &#x3D; pd.read_csv(&quot;bj_hotspots.csv&quot;,encoding&#x3D;&quot;utf-8&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/cket8yx1e000balvgbsixh9u9/hotSpot.png" alt="hotSpots"></p>
+<a id="more"></a>
+
+<blockquote>
+<p>剔除area那列多余的文字以及符号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Function to clean the neighbourhood </span><br><span class="line">def Clean_areas(area): </span><br><span class="line">    # Search for blank-space in the name followed by </span><br><span class="line">    # any characters repeated any number of times </span><br><span class="line">    if(&quot;·&quot; in area):</span><br><span class="line">        area &#x3D; area.split(&#39;·&#39;)</span><br><span class="line">        return area[-1] </span><br><span class="line">    else: </span><br><span class="line">        # if clean up needed return the same name </span><br><span class="line">        return area</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hotSpot.loc[:,&quot;area&quot;] &#x3D; hotSpot[&quot;area&quot;].apply(Clean_areas)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>计算各个区域内热门景点数量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">num_spots &#x3D; hotSpot.sort_values(by&#x3D;&quot;area&quot;).groupby(&quot;area&quot;).size()</span><br><span class="line">num_spots</span><br><span class="line"></span><br><span class="line">area</span><br><span class="line">东城区       19</span><br><span class="line">丰台区        5</span><br><span class="line">大兴区        1</span><br><span class="line">奥林匹克公园     1</span><br><span class="line">宣武区        1</span><br><span class="line">密云县        7</span><br><span class="line">平谷区        4</span><br><span class="line">延庆县        6</span><br><span class="line">怀柔区        7</span><br><span class="line">房山区        7</span><br><span class="line">昌平区        7</span><br><span class="line">明十三陵       3</span><br><span class="line">朝阳区        7</span><br><span class="line">海淀区       18</span><br><span class="line">石景山区       2</span><br><span class="line">西城区       15</span><br><span class="line">门头沟区       5</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>覆盖为行政区域</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># rearrange spot&#39;s area matching with airbnb dataset</span><br><span class="line">def sort_spots_area(data):</span><br><span class="line">    for key,item in list(data.items()):</span><br><span class="line">        if key &#x3D;&#x3D; &#39;奥林匹克公园&#39;:</span><br><span class="line">            data[&#39;朝阳区&#39;] &#x3D; data[&#39;朝阳区&#39;]+item</span><br><span class="line">            del data[key]</span><br><span class="line">        if key &#x3D;&#x3D; &#39;明十三陵&#39;:</span><br><span class="line">            data[&#39;昌平区&#39;] &#x3D; data[&#39;昌平区&#39;]+item</span><br><span class="line">            del data[key]</span><br><span class="line">        if key &#x3D;&#x3D; &#39;宣武区&#39;:</span><br><span class="line">            data[&#39;西城区&#39;] &#x3D; data[&#39;西城区&#39;]+item</span><br><span class="line">            del data[key]</span><br><span class="line">    return data</span><br><span class="line"></span><br><span class="line">area</span><br><span class="line">东城区     19</span><br><span class="line">丰台区      5</span><br><span class="line">大兴区      1</span><br><span class="line">密云县      7</span><br><span class="line">平谷区      4</span><br><span class="line">延庆县      6</span><br><span class="line">怀柔区      7</span><br><span class="line">房山区      7</span><br><span class="line">昌平区     10</span><br><span class="line">朝阳区      8</span><br><span class="line">海淀区     18</span><br><span class="line">石景山区     2</span><br><span class="line">西城区     16</span><br><span class="line">门头沟区     5</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Airbnb Lists data clean</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;打开listingForVis表格</span><br><span class="line">bjList &#x3D; pd.read_csv(&quot;listingForVis.csv&quot;,encoding&#x3D;&quot;utf-8&quot;,low_memory&#x3D;False)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;打开listings表格</span><br><span class="line">bj_Lists &#x3D; pd.read_csv(&quot;listings.csv&quot;,encoding&#x3D;&quot;utf-8&quot;,low_memory&#x3D;False)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;从listings表格中取出需要的信息</span><br><span class="line">ex_col &#x3D; bj_Lists.loc[:,[&quot;id&quot;,&quot;property_type&quot;,&quot;number_of_reviews&quot;,&quot;review_scores_rating&quot;,&quot;reviews_per_month&quot;]]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;合并表格</span><br><span class="line">bjListV2 &#x3D; bjList.merge(ex_col)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/cket8yx1e000balvgbsixh9u9/listsNaInfo.png" alt="listsNaInfo"></p>
+<blockquote>
+<p>移除价格异常值数据，控制在百分之2至百分之98之间。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># remove out liers</span><br><span class="line">outliers_low &#x3D; bjListV2[&quot;price&quot;].quantile(0.2)</span><br><span class="line">outliers_hi  &#x3D; bjListV2[&quot;price&quot;].quantile(0.98)</span><br><span class="line"># lists wihtout outliers in price</span><br><span class="line">bjListV2_filtered &#x3D; bjListV2[(bjListV2[&quot;price&quot;] &lt; outliers_hi) &amp; (bjListV2[&quot;price&quot;] &gt; outliers_low)]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>清理neighbourhood列中的文字格式。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># Function to clean the neighbourhood </span><br><span class="line">def Clean_names(neighbourhood): </span><br><span class="line">    # Search for blank-space in the name followed by </span><br><span class="line">    # any characters repeated any number of times </span><br><span class="line">    if re.search(&#39;\s.*&#39;, neighbourhood): </span><br><span class="line">  </span><br><span class="line">        # Extract the position of beginning of pattern </span><br><span class="line">        pos &#x3D; re.search(&#39;\s.*&#39;, neighbourhood).start() </span><br><span class="line">  </span><br><span class="line">        # return the cleaned name </span><br><span class="line">        return neighbourhood[:pos] </span><br><span class="line">  </span><br><span class="line">    else: </span><br><span class="line">        # if clean up needed return the same name </span><br><span class="line">        return neighbourhood </span><br><span class="line">        </span><br><span class="line">bjListV2_filtered.loc[:,&quot;neighbourhood&quot;] &#x3D; bjListV2_filtered[&quot;neighbourhood&quot;].apply(Clean_names)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>区域数量统计</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># count lists by areas</span><br><span class="line">num_by_area &#x3D; bjListV2_filtered.groupby(&quot;neighbourhood&quot;)[&quot;id&quot;].count()</span><br><span class="line">bjListV2_filtered.groupby(&quot;neighbourhood&quot;)[&quot;id&quot;].count()</span><br><span class="line"></span><br><span class="line">neighbourhood</span><br><span class="line">东城区     2780</span><br><span class="line">丰台区     1026</span><br><span class="line">大兴区      292</span><br><span class="line">密云县     1010</span><br><span class="line">平谷区      112</span><br><span class="line">延庆县     1195</span><br><span class="line">怀柔区      763</span><br><span class="line">房山区      193</span><br><span class="line">昌平区      425</span><br><span class="line">朝阳区     5620</span><br><span class="line">海淀区     1575</span><br><span class="line">石景山区     175</span><br><span class="line">西城区     1208</span><br><span class="line">通州区      355</span><br><span class="line">门头沟区      67</span><br><span class="line">顺义区      566</span><br><span class="line">Name: id, dtype: int64</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>区域房型统计</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type_ares &#x3D; bjListV2_filtered.groupby([&quot;neighbourhood&quot;,&quot;room_type&quot;])[&quot;id&quot;].agg([(&quot;id&quot;,&quot;count&quot;)])</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>评论统计，首先清理评论为空的数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># delete items with no scores</span><br><span class="line">score_List &#x3D; bjListV2_filtered.dropna(subset&#x3D;[&quot;review_scores_rating&quot;]).drop([&quot;neighbourhood_group&quot;,&quot;minimum_nights&quot;],axis&#x3D;&#39;columns&#39;)</span><br><span class="line"></span><br><span class="line"># check how many items in the lists</span><br><span class="line">score_List[&quot;id&quot;].count()</span><br><span class="line">10098</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总共有10098家，通过区域数量计算出区域平均评论数量和评分</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># average scores by areas</span><br><span class="line">mean_score &#x3D; score_List.groupby(&quot;neighbourhood&quot;)[&quot;review_scores_rating&quot;,&quot;number_of_reviews&quot;].mean().reset_index()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>把区域热点景点数据与区域评论数据合并</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># get 通州区 &amp; 顺义区	which has no hotspots data</span><br><span class="line">temp &#x3D; mean_score.sort_values(by&#x3D;&quot;neighbourhood&quot;).iloc[[13,15],:]</span><br><span class="line"></span><br><span class="line"># drop two areas with no spots info, temporarily</span><br><span class="line">#add new column to &#39;mean_score&#39; with the number of spots named &#39;num_spot&#39;</span><br><span class="line">add_spot &#x3D; mean_score.sort_values(by&#x3D;&quot;neighbourhood&quot;).drop([13,15],axis&#x3D;0)</span><br><span class="line">add_spot[&quot;num_spot&quot;] &#x3D; spots_list</span><br><span class="line"></span><br><span class="line"># merge temp to to mean_score</span><br><span class="line">final_spot &#x3D; pd.concat([add_spot, temp],sort&#x3D;True)</span><br><span class="line"></span><br><span class="line">final_spot &#x3D; final_spot.fillna(0).sort_values(by&#x3D;&quot;neighbourhood&quot;)</span><br><span class="line">final_spot</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>计算区域平均日房租，并加入到区域表格中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># mean rent price by area</span><br><span class="line">mean_rent_area &#x3D; score_List.groupby([&quot;neighbourhood&quot;])[&quot;price&quot;].mean().reset_index()</span><br><span class="line">score_List.groupby([&quot;neighbourhood&quot;])[&quot;price&quot;].mean().reset_index()</span><br><span class="line"></span><br><span class="line"># add average rent to each area</span><br><span class="line">final_spot[&#39;rent&#39;] &#x3D; mean_rent_area[&#39;price&#39;]</span><br><span class="line">final_spot</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>读取链家房价数据，并将其加入到区域表格中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Housing price by areas</span><br><span class="line">bjPrice &#x3D; pd.read_csv(&quot;dataset&#x2F;housing_price_bj.csv&quot;,encoding&#x3D;&quot;utf-8&quot;)</span><br><span class="line">bjPrice &#x3D; bjPrice.sort_values(by&#x3D;[&quot;name&quot;]).drop([9,17],axis&#x3D;0).reset_index().drop(&#39;index&#39;,axis&#x3D;1)</span><br><span class="line">bjPrice[&quot;name&quot;] &#x3D; neighbourhood</span><br><span class="line"></span><br><span class="line"># add Housing price to each area</span><br><span class="line">final_spot[&#39;housingPrice&#39;] &#x3D; bjPrice[&#39;transPrice&#39;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将区域Airbnb数量加入区域表格中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># add Number of lists to each area</span><br><span class="line">final_spot[&#39;count&#39;] &#x3D; num_list[&#39;id&#39;]</span><br><span class="line">final_spot &#x3D; final_spot.rename(columns&#x3D;&#123;&#39;number_of_reviews&#39;: &#39;mean_reviews&#39;,&#39;review_scores_rating&#39;:&#39;mean_scores&#39;&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>处理百分位输出csv</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_spot.round(1).to_csv(&#39;beijing_area_stat.csv&#39;,encoding&#x3D;&quot;utf-8&quot;,index&#x3D;None)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>计算相关性</p>
+</blockquote>
+<p><img src="/2020/cket8yx1e000balvgbsixh9u9/listcorr.png" alt="correlation"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/cket8yx1e000balvgbsixh9u9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3/" rel="tag">d3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vis/" rel="tag">vis</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cket8yx1g000calvgfp9f6215/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            Beijing_data_vis_3
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/beijing-vis/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">Beijing  Airbnb Visualisation</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

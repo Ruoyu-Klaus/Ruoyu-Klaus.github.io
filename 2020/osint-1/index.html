@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    OSINT-1  How to utilise search engines |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-OSINT-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  OSINT-1  How to utilise search engines
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/osint-1/" class="article-date">
+  <time datetime="2020-03-14T02:51:04.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%83%BD/">技能</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="OSINT-1-How-to-utilise-search-engines"><a href="#OSINT-1-How-to-utilise-search-engines" class="headerlink" title="OSINT-1  How to utilise search engines"></a>OSINT-1  How to utilise search engines</h1><blockquote>
+<h3 id="Some-Operators"><a href="#Some-Operators" class="headerlink" title="Some Operators"></a>Some Operators</h3></blockquote>
+<ul>
+<li>“”<br>Force an exact-match search. The double quotation marks will help return results including keywords inside.</li>
+<li>*<br>An asterisk character, known as a wildcard, to match one or more words in a phrase</li>
+<li>OR<br>Search for X or Y. This will return results related to X or Y, or both. Note: The pipe ( | ) operator can also be used in place of “OR.”</li>
+<li>AND<br>Similar to OR ( | ), can be used in place of “&amp;” Note: It doesn’t really make much difference for regular searches, as Google defaults to “AND” anyway. But it’s very useful when paired with other operators.<a id="more"></a></li>
+<li>( )<br>Group multiple terms or search operators to control how the search is executed, like (A | B)</li>
+<li>-<br>Exclude a term or phrase. In our example, any pages returned will be related to jobs but not Apple (the company).</li>
+<li>define:<br>A dictionary built into Google, basically. This will display the meaning of a word in a card-like result.</li>
+<li>cache:<br>Returns the most recent cached version of a web page (providing the page is indexed).</li>
+<li>filetype:<br>Restrict results to those of a certain filetype. E.g., PDF, DOCX, TXT, PPT, CSV, xlsx,etc.</li>
+<li>site:<br>Limit results to those from a specific website. For example, Phd site:cardiff.ac.uk, it will return phd related information in the Cardiff university website.</li>
+<li>intitle:<br>Find pages with a certain word (or words) in the title. For example, intitle:Cardiff, any results containing the word “Cardiff” in the title tag will be returned.</li>
+<li>intext:<br>Find pages containing a certain word (or words) somewhere in the content.</li>
+<li>allintext:<br>Similar to “intext,” return results containing all of the specified words.</li>
+<li>AROUND(X)<br>Find pages containing two words or phrases within X words of each other. For example, Cardiff AROUND(5) COMSC, must be present in the content and no further than five words apart.</li>
+<li>year..year<br>Search for a range of numbers. Like Coronavirus 2019..2020</li>
+<li>inurl:<br>Find pages with a certain word (or words) in the URL.</li>
+</ul>
+<hr>
+<p>Go back to the previous versions of pages <a href="https://archive.org/web/" target="_blank" rel="noopener">Archive</a>/<a href="http://timetravel.mementoweb.org/" target="_blank" rel="noopener">TimeTravel</a><br>Resource for <a href="https://www.exploit-db.com/google-hacking-database" target="_blank" rel="noopener">Google Dorks</a></p>
+<p><strong>OSINT ONE PRACTICE</strong></p>
+<ol>
+<li><p>Run one search to find results that include the exact phrase “I love Cardiff because” or “I love Swansea because”</p>
+</li>
+<li><p>Re-do the search looking for ‘love’ and ‘hate’ for both cities (so you should be getting four different kinds of results)</p>
+</li>
+<li><p>How long has a Plaid Cymru page existed on Wikipedia?</p>
+</li>
+<li><p>How much will a fender telecaster cost you in Glasgow in 2018 (via Gumtree)?</p>
+</li>
+<li><p>This is a picture that was tweeted and became a story in France in 2018-19. <a href="https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/dm6wgm-xsaaviem_0.jpg?itok=ybyPVEUc&amp;sc=d770fd22e0ec64161a3683ab0433b41e" target="_blank" rel="noopener">https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/dm6wgm-xsaaviem_0.jpg?itok=ybyPVEUc&amp;sc=d770fd22e0ec64161a3683ab0433b41e</a></p>
+</li>
+<li><p>It was posted with this accompanying text, <em>Ce soir à 17h40 rue Jean Lantier 75001 Paris. Voilà à quoi servent les impôts locaux des Parisiens à payer les agents de propreté à roupiller, on comprend pourquoi Paris est si dégueulasse</em>. Find the twitter handle of the person who posted it, how she describes herself in her profile and when she joined twitter.</p>
+</li>
+<li><p>Find someone renting a room in a house anywhere in the UK who doesn’t want any musicians moving in. What else do they not want?</p>
+</li>
+<li><p>Find the Jomec academic staff page as it looked at least five days ago</p>
+</li>
+<li><p>Find people discussing this youtube video online – the end of ‘Agile’ – but not on youtube. <a href="https://www.youtube.com/watch?v=a-BOSpxYJ9M" target="_blank" rel="noopener">https://www.youtube.com/watch?v=a-BOSpxYJ9M</a> </p>
+</li>
+<li><p>Find online coverage of Big Ben being rung for Brexit that doesn’t mention the Prime Minister</p>
+</li>
+<li><p>Find a list of suppliers used by Network Rail</p>
+</li>
+<li><p><a href="http://www.milliontall.com" target="_blank" rel="noopener">www.milliontall.com</a> doesn’t exist anymore. What colour was ‘milliontall’ written in, when it still ran?</p>
+</li>
+<li><p>Find any document from the HSE [the Irish NHS] marked ‘private and confidential’ that concerns a HSE investigation</p>
+</li>
+<li><p>Find 3 stories on Wales Online that mention Cardiff Crown Court and that were published in August 2019</p>
+</li>
+<li><p>A user identified as ‘Ronald G. Cufley’ reviewed the 7th edition of Bazzell on UK Amazon in December 2019. How long has he been offering customer reviews? Of what?</p>
+</li>
+<li><p>Find a forum where fans of the Cardiff City football team chat</p>
+</li>
+<li><p>Find the original twitter post by the Spanish police in July 2019 that this story is based on: <a href="https://www.bbc.com/news/world-europe-49248764" target="_blank" rel="noopener">https://www.bbc.com/news/world-europe-49248764</a></p>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/osint-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OSINT/" rel="tag">OSINT</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/beijing-vis/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            Beijing  Airbnb Visualisation
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/about/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">About Me</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

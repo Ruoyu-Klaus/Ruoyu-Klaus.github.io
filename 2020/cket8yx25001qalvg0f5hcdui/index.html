@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Next.js For SSR |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-nextForSSR" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Next.js For SSR
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx25001qalvg0f5hcdui/" class="article-date">
+  <time datetime="2020-08-16T16:09:04.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="next-js-与-SSR"><a href="#next-js-与-SSR" class="headerlink" title="next.js 与 SSR"></a>next.js 与 SSR</h2><p>术语:</p>
+<ul>
+<li><p>服务器端渲染（SSR）：响应每个请求，在服务器上渲染应用程序，然后将水合的HTML和Javascript发送回客户端。</p>
+</li>
+<li><p>静态渲染（SR）：在构建时（例如，当您运行npm run build命令时）渲染应用。通常涉及为每个URL生成一个静态HTML页面。这是NextJS的默认方法。</p>
+</li>
+<li><p>客户端渲染（CSR）：在运行时在浏览器中的客户端上渲染应用程序。</p>
+</li>
+</ul>
+<p>利弊:<br>  即使Next的建议是使用静态渲染，每种方法都有其优点和缺点。</p>
+<ul>
+<li><p>服务器端渲染（SSR）：<br>优点:</p>
+<ul>
+<li>可以动态处理动态路线</li>
+<li>渲染页面将始终是最新的</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>如果要进行繁重的处理可能会很慢，因为客户端在发出请求后必须等待每个页面</li>
+<li>CDN无法缓存</li>
+</ul>
+</li>
+<li><p>静态渲染（SR）：<br>优点:</p>
+<ul>
+<li>始终非常快速和高效</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>如果您不知道所有URL早于（构建）时间，则无法处理动态路由</li>
+</ul>
+</li>
+<li><p>客户端渲染（CSR）：<br>缺点:</p>
+<ul>
+<li>随着应用程序的增长迅速降低速度，通常应避免使用</li>
+</ul>
+</li>
+</ul>
+<p>NextJS中的SSR，SR和CSR:</p>
+<blockquote>
+<p>getStaticProps —在构建时获取数据<br>getStaticPaths —在构建时预渲染动态路由<br>getServerSideProps —在每个请求上获取数据<br>swr-在运行时从客户端获取数据</p>
+<p>基本上，Next.JS将在构建时呈现尽可能多的HTML数据（getStaticProps），然后如果以后需要数据，它将运行getServerSideProps。如果需要在客户端上获取数据，使用swr。</p>
+</blockquote>
+<h3 id="getStaticProps"><a href="#getStaticProps" class="headerlink" title="getStaticProps"></a>getStaticProps</h3><p>Next.JS在构建时预先渲染每个页面，并使用 <code>getStaticProps</code> 返回的道具将数据与页面混合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">&#123; data &#125;</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;data&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><span class="keyword">export</span> <span class="keyword">const</span> getStaticProps = <span class="keyword">async</span> () =&gt; </span><br><span class="line">  (&#123; <span class="attr">props</span>: &#123; <span class="attr">data</span>: <span class="string">"Some Data"</span> &#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="TypeScript-Implementation"><a href="#TypeScript-Implementation" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetStaticProps &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getStaticProps: GetStaticProps = <span class="keyword">async</span> () =&gt; </span><br><span class="line">  (&#123; <span class="attr">props</span>: &#123; <span class="attr">data</span>: <span class="string">"Some Data"</span> &#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>关于<code>getStaticProps</code>的一些重要注意事项：</p>
+<p>1.由于它在构建时执行，因此它不会从运行时发出的任何请求接收数据。 其中包括查询参数，HTTP标头等<br>2.它“仅”运行在“服务器”上，这意味着您可以在此处编写服务器代码，而不会下载到该代码或在“客户端”上运行，例如 API调用，数据库调用，请求等<br>3.由于它仅在<strong>服务器</strong>上运行，因此您无需进行本地API调用（例如<code>/ pages / api</code>）。 只需直接在<code>getStaticProps</code>内部编写服务器代码即可。</p>
+<h3 id="getStaticPaths"><a href="#getStaticPaths" class="headerlink" title="getStaticPaths"></a>getStaticPaths</h3><p>因此，<code>getStaticPaths</code>允许您列出以后希望****需要的动态路由列表，然后在构建时将其渲染（例如，当您运行<code>npm run时） 在您的终端窗口中构建</code>）。 您可以通过返回带有`paths’键（必需）的对象来定义它们。</p>
+<p>这就引出了一个问题：“如果** User **请求您未在<code>getStaticPaths</code>中定义的页面会发生什么？”。 返回的对象还具有一个称为“ fallback”的键（必需），该键指示此行为。</p>
+<p>如果将“ fallback”关键字设置为“ false”，则所有未定义的路由“ 404”都会退出。</p>
+<p>如果将fallback键设置为true，则当<strong>User</strong>请求未定义页面时，NextJS会抛出在同一文件中定义的fallback HTML，则在后台进行下一步，并使用用户输入的URL完全生成了所请求的页面，然后将其交换为后备HTML。详情参考 <a href="https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation" target="_blank" rel="noopener">docs</a> 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRouter &#125; <span class="keyword">from</span> <span class="string">'next/router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Post = <span class="function">(<span class="params">&#123; post &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> router = useRouter()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (router.isFallback) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;&#123;...post&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export async function getStaticPaths() &#123;</span></span><br><span class="line"><span class="regexp">  return &#123;</span></span><br><span class="line"><span class="regexp">    paths: [&#123; params: &#123; id: '1' &#125; &#125;, &#123; params: &#123; id: '2' &#125; &#125;],</span></span><br><span class="line"><span class="regexp">    fallback: true,</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export async function getStaticProps(&#123; params &#125;) &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ if url was /</span>posts/<span class="number">3</span>, params.id will be <span class="number">3</span></span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">`https://.../<span class="subst">$&#123;params.id&#125;</span>`</span>)</span><br><span class="line">  <span class="keyword">const</span> post = <span class="keyword">await</span> res.json()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">props</span>: &#123; post &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Post</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TypeScript-Implementation-1"><a href="#TypeScript-Implementation-1" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetStaticPaths &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getStaticPaths: GetStaticPaths = <span class="keyword">async</span> () =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="getServerSideProps"><a href="#getServerSideProps" class="headerlink" title="getServerSideProps"></a>getServerSideProps</h3><p>NextJS将在每次请求时使用<code>getServerSideProps</code>函数呈现页面**，并将使用该函数返回的数据填充组件props。</p>
+<p>根据文档，如果您在构建时无法访问页面所需的数据，则仅应使用<code>getServerSideProps</code>。 即请求中包含一些您需要的信息，以提取所需的数据或呈现页面。</p>
+<p>注意，<code>getServerSideProps</code>仅在** Server <strong>上运行，并且永远不会下载到</strong> Client <strong>或在</strong> Client **中运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Page = <span class="function">(<span class="params">&#123; data &#125;</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;<span class="keyword">export</span> <span class="keyword">const</span> getServerSideProps = <span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">`https://.../data`</span>);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();  <span class="keyword">return</span> &#123; <span class="attr">props</span>: &#123; data &#125; &#125;;</span><br><span class="line">&#125;<span class="keyword">export</span> <span class="keyword">default</span> Page;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TypeScript-Implementation-2"><a href="#TypeScript-Implementation-2" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetServerSideProps &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getServerSideProps: GetServerSideProps = <span class="keyword">async</span> () =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="The-SWR-Hook"><a href="#The-SWR-Hook" class="headerlink" title="The SWR Hook"></a>The SWR Hook</h3><p>Next.JS通常对客户端渲染不满意，但这并不意味着您无法在运行时从客户端获取数据。</p>
+<p>Next的聪明人创建了一个名为[SWR]（<a href="https://swr.vercel.app/）的钩子，该钩子表示**Stale" target="_blank" rel="noopener">https://swr.vercel.app/）的钩子，该钩子表示**Stale</a> While Revalidate** —反过来又是HTTP缓存失效策略的名称。</p>
+<p>我们将在另一篇文章中深入探讨SWR，但与此同时，这里有一个简短的代码片段来演示其用法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> useSWR <span class="keyword">from</span> <span class="string">'swr'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Article = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; data, error &#125; = useSWR(<span class="string">'/api/prices'</span>, fetch)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>There was an error!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Still loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Prices: &#123;data&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>主要的收获是：尽可能使用<strong>静态渲染</strong>。 如果您需要信息来渲染仅在用户发出请求时才可用的页面，请使用“服务器端渲染”。 如果您需要实时更新客户端，强烈建议使用SWR。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/cket8yx25001qalvg0f5hcdui/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/next-js/" rel="tag">next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-js/" rel="tag">react.js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cket8yx24001nalvg35l1d0dg/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            简单本地todo封装
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/cket8yx1z001aalvgcemw5ilm/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">Form upload</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

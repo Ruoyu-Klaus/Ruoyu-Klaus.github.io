@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    DOM &amp; Event in JavaScript |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-javaScript-DOM" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  DOM &amp; Event in JavaScript
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx20001dalvggar1779j/" class="article-date">
+  <time datetime="2020-07-01T13:59:04.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><h3 id="getElement…-与querySelector的区别"><a href="#getElement…-与querySelector的区别" class="headerlink" title="getElement… 与querySelector的区别"></a>getElement… 与querySelector的区别</h3><ul>
+<li>使用getElement…返回的都是动态的集合</li>
+<li>使用querySelectorAll返回的是静态集合</li>
+</ul>
+<h3 id="获取属性特征"><a href="#获取属性特征" class="headerlink" title="获取属性特征"></a>获取属性特征</h3><ul>
+<li>使用特征操作时属性名称不区分大小写</li>
+<li>特征值都为字符串类型，如需数值类型需要进行转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Des</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getAttribute</td>
+<td>获取属性</td>
+</tr>
+<tr>
+<td>setAttribute</td>
+<td>设置属性</td>
+</tr>
+<tr>
+<td>removeAttribute</td>
+<td>删除属性</td>
+</tr>
+<tr>
+<td>hasAttribute</td>
+<td>属性检测</td>
+</tr>
+</tbody></table>
+<p>Note: 大部分情况下可以通过属性该更改并可同步到特征集中。但是像input中的value属性需要通过特征方法如<code>setAttribute</code>更改可同步到特征集中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">value</span>=<span class="string">"secret"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> login = <span class="built_in">document</span>.querySelector(<span class="string">`[name='login']`</span>)</span></span><br><span class="line"><span class="actionscript">login.value =  <span class="string">'12345'</span>;</span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(login.getAttribute(<span class="string">'value'</span>)) <span class="comment">// 'secret'</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//---------------------------------------------------</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">login.setAttribute(<span class="string">'value'</span>, <span class="string">'12345'</span>)  </span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(login.value) <span class="comment">// '12345'</span></span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h4><p>为避免属性重名，JS提供了dataset接口，为属性添加data-前缀</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">data-color</span>=<span class="string">'red'</span>&gt;</span>Hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">const</span> h1 = <span class="built_in">document</span>.querySelector(<span class="string">'h1'</span>);</span></span><br><span class="line"><span class="javascript">  	<span class="built_in">console</span>.log(h1.dataset.color) <span class="comment">// 'red'</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><p>通过promise加载js/css文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">js</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> js = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</span><br><span class="line">    js.type = <span class="string">'text/javascript'</span></span><br><span class="line">    js.src = file</span><br><span class="line">    js.onload = resolve</span><br><span class="line">    js.onerror = reject</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(js)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> css = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>)</span><br><span class="line">    css.rel = <span class="string">'stylesheet'</span></span><br><span class="line">    css.href = file</span><br><span class="line">    css.onload = resolve</span><br><span class="line">    css.onerror = reject</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(css)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="createDocumentFragment"><a href="#createDocumentFragment" class="headerlink" title="createDocumentFragment"></a>createDocumentFragment</h4><p>使用createDocumentFragment可以创建虚拟的节点容器，不直接操作DOM性能更好</p>
+<ul>
+<li>创建的节点的parentNode为null</li>
+<li>使用createDocumentFragment创建的节点来暂存文档节点</li>
+<li>createDocumentFragment创建的节点添加到其他节点上时，会将子节点一并添加</li>
+</ul>
+<h4 id="cloneNode-amp-importNode"><a href="#cloneNode-amp-importNode" class="headerlink" title="cloneNode&amp;importNode"></a>cloneNode&amp;importNode</h4><p>使用cloneNode和document.importNode用于复制节点对象操作</p>
+<p>cloneNode: 节点方法,参数为true时递归复制子节点即深拷贝.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> container = <span class="built_in">document</span>.querySelector(<span class="string">'.container'</span>);</span><br><span class="line"><span class="keyword">let</span> newContainer = container.cloneNode(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>importNode: 对象方法. 第一个参数为节点对象，第二个为true是递归复制. (部分ie浏览器不支持)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> container = <span class="built_in">document</span>.querySelector(<span class="string">'.container'</span>);</span><br><span class="line"><span class="keyword">let</span> newContainer = <span class="built_in">document</span>.importNode(container,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="节点内容"><a href="#节点内容" class="headerlink" title="节点内容"></a>节点内容</h3><h4 id="innerHTML"><a href="#innerHTML" class="headerlink" title="innerHTML"></a>innerHTML</h4><p>inneHTML用于向标签内添加html内容，同时触发浏览器的解析器重绘DOM。会保留原标签</p>
+<h4 id="outerHTML"><a href="#outerHTML" class="headerlink" title="outerHTML"></a>outerHTML</h4><p>而outerHTML取代原来标签和内容反映到页面上，但在JS中还是保留原来的内容</p>
+<h3 id="节点管理"><a href="#节点管理" class="headerlink" title="节点管理"></a>节点管理</h3><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Des</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>append</td>
+<td>节点尾部添加新节点或字符串</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>节点开始添加新节点或字符串</td>
+</tr>
+<tr>
+<td>before</td>
+<td>节点前面添加新节点或字符串</td>
+</tr>
+<tr>
+<td>after</td>
+<td>节点后面添加新节点或字符串</td>
+</tr>
+<tr>
+<td>replaceWith</td>
+<td>将节点替换为新节点或字符串</td>
+</tr>
+</tbody></table>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="表单查找"><a href="#表单查找" class="headerlink" title="表单查找"></a>表单查找</h4><ul>
+<li>使用document.forms获取表单集合</li>
+<li>使用form的name属性获取指定form元素</li>
+<li>针对radio/checkbox获取的表单项是一个集合</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"login"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"secret"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="built_in">document</span>.forms.login.title)</span></span><br><span class="line"><span class="handlebars"><span class="xml">  //  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span> /&gt;</span></span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="class的单独处理"><a href="#class的单独处理" class="headerlink" title="class的单独处理"></a>class的单独处理</h3><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Des</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>node.classList.add</td>
+<td>添加类名</td>
+</tr>
+<tr>
+<td>node.classList.remove</td>
+<td>删除类名</td>
+</tr>
+<tr>
+<td>node.classList.toggle</td>
+<td>切换类名（存删无添）</td>
+</tr>
+<tr>
+<td>node.classList.contains</td>
+<td>类名检测</td>
+</tr>
+</tbody></table>
+<h3 id="widow-getComputedStyle"><a href="#widow-getComputedStyle" class="headerlink" title="widow.getComputedStyle"></a>widow.getComputedStyle</h3><p>使用window.getComputedStyle可获取所有应用在元素上的样式属性</p>
+<ul>
+<li>函数第一个参数为元素</li>
+<li>第二个参数为伪类</li>
+<li>这是计算后的样式属性，所以取得的单位和定义时的可能会有不同</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>具体时间对象参考<a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank" rel="noopener">https://www.w3schools.com/jsref/dom_obj_event.asp</a></p>
+<p><strong>对象绑定</strong></p>
+<p>如果事件处理程序可以是对象，对象的 handleEvent 方法会做为事件处理程序执行。下面将元素的事件统一交由对象处理</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'h1'</span>)</span></span><br><span class="line"><span class="actionscript">  <span class="class"><span class="keyword">class</span> <span class="title">Obj</span> </span>&#123;</span></span><br><span class="line">    handleEvent(e) &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>[e.type](e)</span></span><br><span class="line">    &#125;</span><br><span class="line">    click() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'click'</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">    mouseover() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'mouseover'</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="actionscript">  div.addEventListener(<span class="string">'click'</span>, <span class="keyword">new</span> Obj())</span></span><br><span class="line"><span class="actionscript">  div.addEventListener(<span class="string">'mouseover'</span>, <span class="keyword">new</span> Obj())</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>执行事件处理程序时，会产生当前事件相关信息的对象，即为事件对事。系统会自动做为参数传递给事件处理程序。</p>
+</blockquote>
+<p><code>event.currentTarget</code> 指代的是绑定事件的元素对象</p>
+<p><code>event.target</code>指代的是事件响应的对象或者是其后代, 即得到事件目标元素即最底层的产生事件的对象</p>
+<p>阻止默认事件行为可以使用<code>event.preventDefault()</code></p>
+<h3 id="窗口事件"><a href="#窗口事件" class="headerlink" title="窗口事件"></a>窗口事件</h3><table>
+<thead>
+<tr>
+<th>Event Type</th>
+<th>Des</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>window.onload</td>
+<td>文档解析及外部资源加载后</td>
+</tr>
+<tr>
+<td>DOMContentLoaded</td>
+<td>文档解析后不需要外部资源加载，只能使用addEventListener设置</td>
+</tr>
+<tr>
+<td>window.beforeunload</td>
+<td>文档刷新或关闭时</td>
+</tr>
+<tr>
+<td>window.unload</td>
+<td>文档卸载时</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>页面滚动时</td>
+</tr>
+</tbody></table>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/cket8yx20001dalvggar1779j/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/" rel="tag">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cket8yx23001kalvg8jd1d1ry/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            lazyLoadAndDebounce
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/cket8yx26001ualvg7hmzblfw/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">Promise in JavaScript</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

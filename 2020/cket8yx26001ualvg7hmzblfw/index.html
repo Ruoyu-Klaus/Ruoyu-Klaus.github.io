@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Promise in JavaScript |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-promise-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Promise in JavaScript
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx26001ualvg7hmzblfw/" class="article-date">
+  <time datetime="2020-06-30T10:59:04.000Z" itemprop="datePublished">2020-06-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="What-is-a-Promise"><a href="#What-is-a-Promise" class="headerlink" title="What is a Promise?"></a>What is a Promise?</h2><blockquote>
+<p><strong>MDN</strong></p>
+<p>A <code>Promise</code> is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action’s eventual success value or failure reason.</p>
+</blockquote>
+<p>A <code>Promise</code> is in one of these states:</p>
+<ul>
+<li><p><em>pending</em>: initial state, neither fulfilled nor rejected.</p>
+</li>
+<li><p><em>fulfilled</em>: meaning that the operation completed successfully.</p>
+</li>
+<li><p><em>rejected</em>: meaning that the operation failed</p>
+</li>
+</ul>
+<h2 id="Promise-chain"><a href="#Promise-chain" class="headerlink" title="Promise chain"></a>Promise chain</h2><p>A pending promise can either be fulfilled with a value, or rejected with a reason (error). When either of these options happens, the associated handlers queued up by a promise’s then method are called</p>
+<p>  <img src="/2020/cket8yx26001ualvg7hmzblfw/promise-chain.png" alt="promise-chain"></p>
+<blockquote>
+<p>The methods <code>promise.then(),</code> <code>promise.catch(), and promise.finally()</code> are used to associate further action with a promise that becomes settled.</p>
+</blockquote>
+<p>  链式加载</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    script.src = file;</span><br><span class="line">    script.onload = <span class="function"><span class="params">()</span> =&gt;</span> resolve(script);</span><br><span class="line">    script.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject();</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">load(<span class="string">"js/1.js"</span>)</span><br><span class="line">.then(<span class="function"><span class="params">()</span> =&gt;</span> load(<span class="string">"js/2.js"</span>))</span><br><span class="line">.then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">code</span> <span class="attr">here</span>&gt;</span>);</span></span><br></pre></td></tr></table></figure>
+
+<p>使用promise封装定时器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装定时器</span></span><br><span class="line"><span class="comment">//定时器为宏任务队列</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeOut</span>(<span class="params">delay=<span class="number">3000</span>,callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>callback(resolve),delay)</span><br><span class="line">        <span class="comment">//delay to trigger Promise return resolve to callback</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//--------------------------------------------</span></span><br><span class="line"><span class="keyword">var</span> timeInterval = <span class="function">(<span class="params">callback, delay = <span class="number">60</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> callback(id), delay)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">timeInterval(<span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">"div"</span>);</span><br><span class="line">  <span class="keyword">let</span> left = <span class="built_in">parseInt</span>(<span class="built_in">window</span>.getComputedStyle(div).left)</span><br><span class="line">  div.style.left = left + <span class="number">10</span> + <span class="string">'px'</span>;</span><br><span class="line">  <span class="keyword">if</span> (left &gt; <span class="number">250</span>) &#123;</span><br><span class="line">    clearInterval(id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="利用promise实现缓存加载"><a href="#利用promise实现缓存加载" class="headerlink" title="利用promise实现缓存加载"></a>利用promise实现缓存加载</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//缓存后台数据，避免重复请求数据</span></span><br><span class="line"><span class="comment">//函数实际上也是对象，可以给这个函数对象添加cache属性,从而存储请求得到的数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cache = query.cache || (query.cache=<span class="keyword">new</span> <span class="built_in">Map</span>());</span><br><span class="line">    <span class="keyword">if</span> (cache.has(name))&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'走了缓存'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(cache.get(name))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        resolve(&#123;[name]:<span class="string">"ruoyu"</span>&#125;)&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">        cache.set(name,value);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'没走缓存'</span>)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">query(<span class="string">"请求名"</span>).then(<span class="function"><span class="params">value</span>=&gt;</span><span class="built_in">console</span>.log(value))</span><br><span class="line"></span><br><span class="line">setTimeout(</span><br><span class="line">    ()=&gt;query(<span class="string">"请求名"</span>)</span><br><span class="line">        .then(<span class="function"><span class="params">value</span>=&gt;</span><span class="built_in">console</span>.log(value))</span><br><span class="line">    ,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Static-method"><a href="#Static-method" class="headerlink" title="Static method"></a>Static method</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" rel="noopener"><code>Promise.all(iterable)</code></a></p>
+<p>Wait for all promises to be resolved, or for any to be rejected.</p>
+<p>If the returned promise resolves, it is resolved with an aggregating array of the values from the resolved promises ,in the same order as defined in the iterable of multiple promises.</p>
+<p>If it rejects, it is rejected with the reason from the first promise in the iterable that was rejected.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled" target="_blank" rel="noopener"><code>Promise.allSettled(iterable)</code></a></p>
+<p>Wait until all promises have settled (each may resolve or reject).</p>
+<p>Returns a promise that resolves after all of the given promises have either resolved or rejected, with an array of objects that each describe the outcome of each promise.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank" rel="noopener"><code>Promise.race(iterable)</code></a></p>
+<p>Wait until any of the promises is resolved or rejected.</p>
+<p>If the returned promise resolves, it is resolved with the value of the first promise in the iterable that resolved.</p>
+<p>If it rejects, it is rejected with the reason from the first promise that was rejected.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject" target="_blank" rel="noopener"><code>Promise.reject(reason)</code></a></p>
+<p>Returns a new <code>Promise</code> object that is rejected with the given reason.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" target="_blank" rel="noopener"><code>Promise.resolve(value)</code></a></p>
+<p>Returns a new <code>Promise</code> object that is resolved with the given value. If the value is a thenable (i.e. has a <code>then</code> method), the returned promise will “follow” that thenable, adopting its eventual state; otherwise the returned promise will be fulfilled with the value.</p>
+<h3 id="实现promise队列"><a href="#实现promise队列" class="headerlink" title="实现promise队列"></a>实现promise队列</h3><p>基本思路：通过上一次返回的promise来依次执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="built_in">Promise</span>.resolve(<span class="number">1</span>);</span><br><span class="line">promise.then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">  value += <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(value) <span class="comment">//2</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      resolve(value+<span class="number">1</span>);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">//3</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//先打印1，然后隔一秒之后再打印3</span></span><br></pre></td></tr></table></figure>
+
+<p>通过map方法实现promise队列</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queue</span> = (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> promise = <span class="built_in">Promise</span>.resolve();</span><br><span class="line">  arr.map(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">    promise = promise.then(<span class="function"><span class="params">_</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(item);</span><br><span class="line">          resolve(item);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">queue([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);</span><br><span class="line"><span class="comment">//每隔一秒输出数组中的值</span></span><br></pre></td></tr></table></figure>
+
+<p>通过reduce方法实现promise队列</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sentQuery</span>(<span class="params">items</span>)</span>&#123;</span><br><span class="line">    items.reduce(<span class="function">(<span class="params">promise,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> promise.then(<span class="function"><span class="params">_</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(item)</span><br><span class="line">                    resolve(item)</span><br><span class="line">                &#125;,<span class="number">1000</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,<span class="built_in">Promise</span>.resolve())</span><br><span class="line">&#125;</span><br><span class="line">sentQuery([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<h3 id="封装可利用队列请求模块"><a href="#封装可利用队列请求模块" class="headerlink" title="封装可利用队列请求模块"></a>封装可利用队列请求模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ajax</span></span><br><span class="line"><span class="keyword">const</span> ajax = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    xhr.open(<span class="string">'GET'</span>, url)</span><br><span class="line">    xhr.send()</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="number">200</span>) &#123;</span><br><span class="line">        resolve(<span class="keyword">this</span>.response)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="keyword">this</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//队列处理</span></span><br><span class="line"><span class="keyword">const</span> queue = <span class="function"><span class="keyword">function</span>(<span class="params">requests</span>)</span>&#123;</span><br><span class="line">  requests.reduce(<span class="function">(<span class="params">promise,request</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//每次request中ajax的promise状态改变之后再接下一个request</span></span><br><span class="line">    <span class="keyword">return</span> promise.then(request)</span><br><span class="line">  &#125;,<span class="built_in">Promise</span>.resolve())</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr_req = [<span class="string">'url1'</span>,<span class="string">'url2'</span>,<span class="string">'url3'</span>].map(<span class="function"><span class="params">v</span> =&gt;</span> <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">      ajax(v).then(<span class="function"><span class="params">v</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'doing something with values'</span>))<span class="comment">//这里返回一个可被then方法接收的函数</span></span><br><span class="line">    );</span><br><span class="line">queue(arr_req)</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单实现axios"><a href="#简单实现axios" class="headerlink" title="简单实现axios"></a>简单实现axios</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">axios</span></span>&#123;</span><br><span class="line">    options = &#123;</span><br><span class="line">      responseType: <span class="string">'json'</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  <span class="keyword">constructor</span>(method,url,data,options)&#123;</span><br><span class="line">    <span class="keyword">this</span>.method = method;</span><br><span class="line">    <span class="keyword">this</span>.url = url;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">    <span class="keyword">this</span>.options = <span class="built_in">Object</span>.assign(<span class="keyword">this</span>.options,options);</span><br><span class="line">  &#125;;</span><br><span class="line">  xhr()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">      xhr.open(<span class="keyword">this</span>.method,<span class="keyword">this</span>.url);</span><br><span class="line">      xhr.responseType = <span class="keyword">this</span>.options.responseType</span><br><span class="line">      xhr.send(<span class="keyword">this</span>.data);</span><br><span class="line">      xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status===<span class="number">200</span>)&#123;</span><br><span class="line">          resolve(xhr.response);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          reject(xhr.statusText);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">          reject(err);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">get</span>(url,options)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>(<span class="string">'GET'</span>,url,<span class="literal">null</span>,options).xhr()</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">static</span> post(url,data,options)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>(<span class="string">'POST'</span>,url,data,options).xhr();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">axios.get(<span class="string">'http://localhost:5000/edu_policies'</span>).then(<span class="function"><span class="params">value</span>=&gt;</span><span class="built_in">console</span>.log(value))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Summarize"><a href="#Summarize" class="headerlink" title="Summarize"></a>Summarize</h3><ul>
+<li>在promise中代码与主线程中的优先级同步，但then方法之后的代码就会进入微任务队列等待主线程执行完毕后再执行。</li>
+<li><code>promise</code> 的 then、catch、finally的方法都是异步任务</li>
+<li>每次的 <code>then</code> 都是一个全新的 <code>promise</code>，默认 then 返回的 promise 状态是 fulfilled</li>
+<li>promise.resolve可以resolve另一个待解决的promise</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/cket8yx26001ualvg7hmzblfw/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cket8yx20001dalvggar1779j/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            DOM &amp; Event in JavaScript
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/cket8yx1j000ialvg2rtlfajt/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">Class in JavaScript</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

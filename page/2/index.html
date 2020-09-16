@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Ruoyu Wang</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-object-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx27001xalvg7sme3t73/"
+    >Object in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx27001xalvg7sme3t73/" class="article-date">
+  <time datetime="2020-06-27T11:59:04.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h2><p>对象和函数、数组一样是引用类型，即复制只会复制引用地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">name</span>: <span class="string">"wang"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj1;</span><br><span class="line"><span class="built_in">console</span>.log(obj1===obj2); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象的解构"><a href="#对象的解构" class="headerlink" title="对象的解构"></a>对象的解构</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object Deconstruction</span></span><br><span class="line"><span class="keyword">let</span> web = &#123; <span class="attr">name</span>: <span class="string">"wang"</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;;</span><br><span class="line"><span class="comment">//把name赋值给变量w</span></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>:w, gender=<span class="string">"male"</span>&#125; = web;</span><br><span class="line"><span class="built_in">console</span>.log(w); <span class="comment">//'wang'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Rest parameters 展开语法</span></span><br><span class="line"><span class="keyword">let</span> web_new = &#123; ...web, <span class="attr">gender</span>: <span class="string">"male"</span>, <span class="attr">name</span>: <span class="string">"zhu"</span> &#125;</span><br><span class="line"><span class="built_in">console</span>.log(web_new);</span><br><span class="line"><span class="built_in">console</span>.log(web)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object Deconstruction for function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">option = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//若右值不为空则取右值即参数option对象</span></span><br><span class="line">    <span class="comment">//默认option为空对象，因此取默认赋值</span></span><br><span class="line">    <span class="keyword">let</span> &#123; </span><br><span class="line">            width = <span class="number">200</span>, </span><br><span class="line">            height = <span class="number">200</span>, </span><br><span class="line">            backgroundColor = <span class="string">"red"</span>,</span><br><span class="line">            parentElement = <span class="string">"body"</span>,</span><br><span class="line">        &#125; = option;</span><br><span class="line">    <span class="keyword">const</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">    <span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(parentElement);</span><br><span class="line">    div.style.width = width + <span class="string">"px"</span>;</span><br><span class="line">    div.style.height = height + <span class="string">"px"</span>;</span><br><span class="line">    div.style.backgroundColor = backgroundColor;</span><br><span class="line">    container.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line">createElement(&#123;<span class="attr">backgroundColor</span>:<span class="string">"blue"</span>&#125;)</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/cket8yx27001xalvg7sme3t73/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-js-function" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx21001falvg33wjgmgr/"
+    >Funtion in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx21001falvg33wjgmgr/" class="article-date">
+  <time datetime="2020-06-26T07:17:04.000Z" itemprop="datePublished">2020-06-26</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="函数声明与优先级"><a href="#函数声明与优先级" class="headerlink" title="函数声明与优先级"></a>函数声明与优先级</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局标准声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ++num;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局匿名函数</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> --num;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//全局标准声明优先级高于赋值声明因此输出：2</span></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">3</span>)); <span class="comment">//2</span></span><br><span class="line"><span class="comment">//全局声明函数优先级会被提升，但是变量匿名函数优先级不会提升</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><p>形参数量大于实参时，没有传参的形参值为 undefined</p>
+<p>实参数量大于形参时，多于的实参将忽略并不会报错</p>
+<p>在函数内部，arguments变量为所有参数的集合</p>
+<p>当然也可以使用rest paramter把参数展开</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> restParam = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(args)<span class="comment">//为所有参数的集合</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用函数解析模版字符串"><a href="#使用函数解析模版字符串" class="headerlink" title="使用函数解析模版字符串"></a>使用函数解析模版字符串</h3>
+      
+      <a class="article-more-link" href="/2020/cket8yx21001falvg33wjgmgr/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSript/" rel="tag">JavaSript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-7" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1y0018alvgf0a6e9gi/"
+    >CSS-基础(七)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1y0018alvgf0a6e9gi/" class="article-date">
+  <time datetime="2020-06-19T16:52:04.000Z" itemprop="datePublished">2020-06-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（七）"><a href="#CSS学习笔记（七）" class="headerlink" title="CSS学习笔记（七）"></a>CSS学习笔记（七）</h1><h2 id="CSS过渡-transition"><a href="#CSS过渡-transition" class="headerlink" title="CSS过渡 transition"></a>CSS过渡 transition</h2><p> 过渡属性</p>
+<p><code>transition-property:[...property]</code></p>
+<p>过渡时间</p>
+<p><code>transition-duration:[...time]</code> </p>
+<p>延迟触发</p>
+<p><code>transition-delay:[...time]</code></p>
+<p>过渡效果</p>
+<p><code>transition-timing-function:[linear||ease-in||ease-out||ease-in-out]</code></p>
+<p>过渡属性的缩写，其中transition-duration必填</p>
+<p><code>transition:[property1] [transition-timing-function] transition-duration [transition-delay],</code> </p>
+      
+      <a class="article-more-link" href="/2020/cket8yx1y0018alvgf0a6e9gi/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-6" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1x0014alvg3ge585hi/"
+    >CSS-基础(六)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1x0014alvg3ge585hi/" class="article-date">
+  <time datetime="2020-06-18T19:34:04.000Z" itemprop="datePublished">2020-06-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（六）"><a href="#CSS学习笔记（六）" class="headerlink" title="CSS学习笔记（六）"></a>CSS学习笔记（六）</h1><h2 id="变形与透视"><a href="#变形与透视" class="headerlink" title="变形与透视"></a>变形与透视</h2><h3 id="translate-控制元素三纬运动"><a href="#translate-控制元素三纬运动" class="headerlink" title="translate 控制元素三纬运动"></a>translate 控制元素三纬运动</h3><ul>
+<li>X axis</li>
+</ul>
+<p><code>transform:translateX(200px)</code></p>
+<ul>
+<li>Y axis</li>
+</ul>
+<p><code>transform:translateY(200px)</code></p>
+<ul>
+<li>XY shorthand</li>
+</ul>
+<p><code>transfrom:translate(200px,200px)</code></p>
+<ul>
+<li>Z axis has no relative unit 因此只能使用绝对单位</li>
+</ul>
+<p><code>transfrom:translateZ(200px)</code></p>
+<ul>
+<li>3D shorthand</li>
+</ul>
+<p><code>transfrom:translate3d(20%,0,100px)</code></p>
+<h3 id="scale-控制缩放"><a href="#scale-控制缩放" class="headerlink" title="scale 控制缩放"></a>scale 控制缩放</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*example*/</span></span><br><span class="line"><span class="selector-tag">main</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">div-nth-child</span>(1)&#123;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">scaleX</span>(<span class="number">2</span>); <span class="comment">/*x轴尺寸放大原来的1倍*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">main</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">div-nth-child</span>(2)&#123;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">scaleY</span>(.<span class="number">5</span>);<span class="comment">/*y轴尺寸缩小原来的1倍*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">main</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">div-nth-child</span>(2)&#123;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">2</span>, .<span class="number">5</span>); <span class="comment">/*Shorthand*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="transform-基点"><a href="#transform-基点" class="headerlink" title="transform 基点"></a>transform 基点</h3><p><code>transform-orign:left top //从左上角开始缩放</code></p>
+<h3 id="rotate-旋转"><a href="#rotate-旋转" class="headerlink" title="rotate 旋转"></a>rotate 旋转</h3><p><code>transform:rotateX(45deg)</code> 向上翻转45度</p>
+<p><code>transform:rotateY(45deg)</code>向右翻转45度</p>
+<p><code>transform:rotateZ(45deg)</code> 平面旋转45度 或<code>transform:rotate(45deg)</code></p>
+<h3 id="skew-倾斜"><a href="#skew-倾斜" class="headerlink" title="skew 倾斜"></a>skew 倾斜</h3><p><code>transform:skewX(45deg)</code></p>
+<p><code>transform:skewY(45deg)</code></p>
+<p><code>transform:skew(45deg,45deg)</code></p>
+      
+      <a class="article-more-link" href="/2020/cket8yx1x0014alvg3ge585hi/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-5" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1x0012alvg4dq92uib/"
+    >CSS-基础(五)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1x0012alvg4dq92uib/" class="article-date">
+  <time datetime="2020-06-13T19:34:04.000Z" itemprop="datePublished">2020-06-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（五）"><a href="#CSS学习笔记（五）" class="headerlink" title="CSS学习笔记（五）"></a>CSS学习笔记（五）</h1><h2 id="Grid-栅格系统"><a href="#Grid-栅格系统" class="headerlink" title="Grid 栅格系统"></a>Grid 栅格系统</h2><p><img src="/2020/cket8yx1x0012alvg4dq92uib/compatibility.png" alt="compatibility"></p>
+<h3 id="grid声明"><a href="#grid声明" class="headerlink" title="grid声明"></a>grid声明</h3><ul>
+<li><strong>grid</strong> – generates a block-level grid</li>
+<li><strong>inline-grid</strong> – generates an inline-level grid</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid | inline-grid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="格子布局"><a href="#格子布局" class="headerlink" title="格子布局"></a>格子布局</h3><p><code>grid-template-columns</code> <code>grid-template-rows</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">40px</span> <span class="number">50px</span> auto <span class="number">50px</span> <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">100px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/cket8yx1x0012alvg4dq92uib/template-row&col.png" alt="template-row&amp;col"></p>
+<p>利用<strong>repeat( [n], [size] )</strong>快速分配. 比如<code>grid-template-rows:repeat(4,25%)</code> [均等绘制4行] or <code>grid-template-rows:repeat(2, 100px, 50px)</code>[绘制4行分别为100px，50px，100px，50px 高]</p>
+<h3 id="fr-unit"><a href="#fr-unit" class="headerlink" title="fr unit"></a>fr unit</h3><p><code>fr</code> : To set the size of a track as a fraction of the free space of the grid container and the free space is calculated <em>after</em> any non-flexible items.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:grid;</span><br><span class="line">  <span class="attribute">widht</span>:<span class="number">350px</span>;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">50px</span> <span class="number">1</span>fr <span class="number">1</span>fr; <span class="comment">/*100px 50px 100px 100px */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="minmax-unit-unit-控制格子最大最小值"><a href="#minmax-unit-unit-控制格子最大最小值" class="headerlink" title="minmax(unit,unit) 控制格子最大最小值"></a>minmax(unit,unit) 控制格子最大最小值</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:grid;</span><br><span class="line">  <span class="attribute">widht</span>:<span class="number">350px</span>;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>,minmax(<span class="number">50px</span>,<span class="number">100px</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gap-格间距"><a href="#gap-格间距" class="headerlink" title="gap 格间距"></a>gap 格间距</h3><p><code>row-gap:[unit]</code> <code>column-gap:[unit]</code> </p>
+<p>Shorthand: <code>gap:&lt;row-gap&gt; &lt;column-gap&gt;</code></p>
+<h3 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a>grid-template-areas</h3><p>通过引用使用grid-area属性指定的网格区域的名称来定义网格模板。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-c</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: auto;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">    <span class="string">"header header header header"</span></span><br><span class="line">    <span class="string">"main main . sidebar"</span></span><br><span class="line">    <span class="string">"footer footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="控制行列对其方式-与Flex类似"><a href="#控制行列对其方式-与Flex类似" class="headerlink" title="控制行列对其方式 与Flex类似"></a>控制行列对其方式 与Flex类似</h3><p>控制单元格内部列对齐 <code>justify-items</code></p>
+<p><code>.container {  justify-items: start | end | center | stretch; }</code></p>
+<p>控制单元格内部行对齐 <code>align-items</code></p>
+<p><code>.container {  align-items: start | end | center | stretch; }</code></p>
+<ul>
+<li>如果容器<code>container</code>的大小超过内部所有格子的大小，那么可以使用 <code>justify-content</code> 和 <code>align-content</code> 来控制在其容器总的对齐方式</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-4" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1w000zalvg095599bi/"
+    >CSS-基础(四)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1w000zalvg095599bi/" class="article-date">
+  <time datetime="2020-06-13T12:34:04.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（四）"><a href="#CSS学习笔记（四）" class="headerlink" title="CSS学习笔记（四）"></a>CSS学习笔记（四）</h1><h2 id="Flex-弹性布局"><a href="#Flex-弹性布局" class="headerlink" title="Flex 弹性布局"></a>Flex 弹性布局</h2><h3 id="display-弹性盒子声明"><a href="#display-弹性盒子声明" class="headerlink" title="display 弹性盒子声明"></a>display 弹性盒子声明</h3><p>This defines a flex container; inline or block depending on the given value. It enables a flex context for all its direct children.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex; <span class="comment">/* or inline-flex */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="内部排列方式-flex-direction"><a href="#内部排列方式-flex-direction" class="headerlink" title="内部排列方式 flex-direction"></a>内部排列方式 flex-direction</h3><p><img src="/2020/cket8yx1w000zalvg095599bi/flex-direction.png" alt="flex-direction"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note</strong>: flex-direction默认为row</p>
+</blockquote>
+      
+      <a class="article-more-link" href="/2020/cket8yx1w000zalvg095599bi/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-3" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1v000walvggvwqah2b/"
+    >CSS-基础(三)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1v000walvggvwqah2b/" class="article-date">
+  <time datetime="2020-06-12T14:31:04.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（三）"><a href="#CSS学习笔记（三）" class="headerlink" title="CSS学习笔记（三）"></a>CSS学习笔记（三）</h1><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p><img src="/2020/cket8yx1v000walvggvwqah2b/box-model.png" alt="box-model"></p>
+<ul>
+<li><p>外边距合并：如果两个盒子的外边距重叠，则只取最大那边的外边距值</p>
+</li>
+<li><p><code>box-sizing:border-box;</code>  传统意义上“width or height + padding + border = actual width or height”. 如果设置了<code>box-sizing:border-box;</code>属性，则”width or height = padding + border + content width or height”</p>
+</li>
+<li><p><code>border-radius:50%</code>绘制圆边框</p>
+</li>
+<li><p><code>outline:solid 2px #ddd</code> 轮廓线不会占用空间</p>
+</li>
+<li><p><code>width:fit-content</code> <code>width:max-content</code> <code>width:min-content</code>  根据根据内容来决定大小</p>
+</li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/cket8yx1v000walvggvwqah2b/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1u000talvge946h086/"
+    >CSS-基础(二)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1u000talvge946h086/" class="article-date">
+  <time datetime="2020-06-10T21:25:04.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（二）"><a href="#CSS学习笔记（二）" class="headerlink" title="CSS学习笔记（二）"></a>CSS学习笔记（二）</h1><h2 id="CSS文本"><a href="#CSS文本" class="headerlink" title="CSS文本"></a>CSS文本</h2><h3 id="em-和-rem"><a href="#em-和-rem" class="headerlink" title="em 和 rem"></a>em 和 rem</h3><blockquote>
+<p><code>em</code> <em>is relative to the font-size of its direct or nearest parent,</em> <code>rem</code> *is only relative to the html (root) font-size.</p>
+</blockquote>
+<p>根据W3C的定义：</p>
+<blockquote>
+<p>Equal to the computed value of the <a href="https://www.w3.org/TR/css-fonts-3/#propdef-font-size" target="_blank" rel="noopener">font-size</a> property of the element on which it is used</p>
+</blockquote>
+<p>因此，<code>em</code>是相对于使用它的元素的字体大小, 如果该元素没有设置字体大小，那么就会向父级寻找</p>
+<p><code>em</code>浏览器默认字体大小，16px( 火狐和Chrome )</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*如果该元素设置了字体大小，那么对应的em单位就会相对于该元素的字体大小*/</span></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; </span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">2em</span>; <span class="comment">/*32px*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了方便换算，我们通常在css中设置body的属性 <code>font-size:62.5%</code>，这就使<code>1em</code>值变为<code>10px</code></p>
+<p>而<code>rem</code>是相对于根(html)元素的<code>font-size</code>计算的</p>
+<blockquote>
+<p>Equal to the computed value of <a href="https://www.w3.org/TR/css-fonts-3/#propdef-font-size" target="_blank" rel="noopener">font-size</a> on the root element.</p>
+</blockquote>
+<h3 id="font样式简写"><a href="#font样式简写" class="headerlink" title="font样式简写"></a>font样式简写</h3><p><code>font:bold italic 16px/1.4rem &#39;Merriweather&#39;, serif;</code></p>
+<p>从左到右依次是<code>font-weight</code>, <code>font-style</code>, <code>font-size</code>, <code>line-height</code>,<code>font-family</code>。其中<code>font-weight</code>和<code>font-style</code>是可以参略的</p>
+<h3 id="添加滑线和文字阴影"><a href="#添加滑线和文字阴影" class="headerlink" title="添加滑线和文字阴影"></a>添加滑线和文字阴影</h3><p>上滑线， 删除线， 下滑线</p>
+<p><code>text-decoration:overline || line-through || underline</code> </p>
+<p>阴影颜色， 右偏移量,  下偏移量，模糊度</p>
+<p><code>text-shadow:red 4px 4px 4px</code></p>
+<h3 id="空白和文本溢出"><a href="#空白和文本溢出" class="headerlink" title="空白和文本溢出"></a>空白和文本溢出</h3><p>保留多余空格和换行<code>p{white-space:pre;}</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*div内文本不换行溢出隐藏*/</span></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  </span><br><span class="line">	 <span class="attribute">white-space</span>:nowrap;</span><br><span class="line">   <span class="attribute">overflow</span>:hidden;</span><br><span class="line">   <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文本锁进和对齐"><a href="#文本锁进和对齐" class="headerlink" title="文本锁进和对齐"></a>文本锁进和对齐</h3><p>文本锁进 <code>text-indent:2rem</code> </p>
+<p>文本对齐 <code>text-align:center</code></p>
+<p>The <code>vertical-align</code>property can be used in two contexts:</p>
+<ul>
+<li>To vertically align an inline element’s box inside its containing line box. For example, it could be used to vertically position an <code>&lt;img&gt;</code> in a line of text</li>
+<li>To vertically align the content of a cell in a table<img src="/2020/cket8yx1u000talvge946h086/vertical-align.png" alt="vertical-align"></li>
+</ul>
+<h3 id="冷门排版API"><a href="#冷门排版API" class="headerlink" title="冷门排版API"></a>冷门排版API</h3><p>单词间距<code>word-spacing</code></p>
+<p>字母间距<code>letter-spacing</code></p>
+<p>垂直从左到右排版 <code>writing-mode:vertical-lr</code></p>
+<p>图片与文字垂直对齐 <a href="'https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align'"><code>vertical-align</code></a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-css-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1t000qalvg7d7r3km4/"
+    >CSS-基础(一)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1t000qalvg7d7r3km4/" class="article-date">
+  <time datetime="2020-06-09T16:52:04.000Z" itemprop="datePublished">2020-06-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS学习笔记（一）"><a href="#CSS学习笔记（一）" class="headerlink" title="CSS学习笔记（一）"></a>CSS学习笔记（一）</h1><h2 id="CSS的导入"><a href="#CSS的导入" class="headerlink" title="CSS的导入"></a>CSS的导入</h2><ul>
+<li>CSS文件三种的引入方式</li>
+</ul>
+<ol>
+<li><code>&lt;link href=&#39;[filePaht]&#39;, rel=&#39;stylesheet&#39; type=&quot;text/css&quot;&gt;&lt;/link&gt;</code></li>
+<li><code>&lt;div style=&quot;font-size:2rem&quot;&gt;ruoyu&lt;/div&gt;</code></li>
+<li><code>&lt;head&gt; &lt;style&gt;div{font-size:2rem}&lt;style&gt; &lt;/head&gt;</code></li>
+</ol>
+<ul>
+<li>在CSS文件中导入其他css样式：<code>@import url([filePath]) [all || screen || print] and (min-width:678px)</code></li>
+</ul>
+      
+      <a class="article-more-link" href="/2020/cket8yx1t000qalvg7d7r3km4/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-js-closure" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx22001ialvg5fe0fav7/"
+    >JS-Closure</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx22001ialvg5fe0fav7/" class="article-date">
+  <time datetime="2020-06-07T20:04:04.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="JS的作用域与闭包"><a href="#JS的作用域与闭包" class="headerlink" title="JS的作用域与闭包"></a>JS的作用域与闭包</h1><h2 id="What-is-closure"><a href="#What-is-closure" class="headerlink" title="What is closure?"></a>What is <code>closure</code>?</h2><p>A <strong>closure</strong> is the combination of a function bundled together (enclosed) with references to its surrounding state (the <strong>lexical environment</strong>).</p>
+<p>根据MDN的定义，闭包就是说内部函数可以访问外部函数的作用域。每一个Javascript函数在被创建时都会形成闭包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+
+<p>正如文档所说 <em>A closure is the combination of a function and the lexical environment within which that function was declared.</em> 因此当<code>makeFunc函数实例话给变量</code>myFunc<code>时，其内部的</code>displayName<code>保留了它的语法环境包括变量</code>name`.</p>
+      
+      <a class="article-more-link" href="/2020/cket8yx22001ialvg5fe0fav7/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">Previous</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

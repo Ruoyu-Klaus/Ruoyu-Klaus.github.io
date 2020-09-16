@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ruoyu Wang</title>
+  <icon>https://www.gravatar.com/avatar/8f14f5dd9781d6afb1802a4852fd1492</icon>
+  <subtitle>Input a keyword, return a new world</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://wangruoyu.digital/"/>
+  <updated>2020-09-07T14:47:37.076Z</updated>
+  <id>http://wangruoyu.digital/</id>
+  
+  <author>
+    <name>Ruoyu Wang</name>
+    <email>klaus1201810802@gmail.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>useBreakPointHook</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx2b0025alvgbqhw7q0x/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx2b0025alvgbqhw7q0x/</id>
+    <published>2020-09-07T14:52:04.000Z</published>
+    <updated>2020-09-07T14:47:37.076Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;useBreakpoint-Hook-—在React中获取媒体查询断点&quot;&gt;&lt;a href=&quot;#useBreakpoint-Hook-—在React中获取媒体查询断点&quot; class=&quot;headerlink&quot; title=&quot;useBreakpoint Hook
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="react.js" scheme="http://wangruoyu.digital/tags/react-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Digital ocean 部署</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx190006alvg0nlx61dr/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx190006alvg0nlx61dr/</id>
+    <published>2020-09-03T20:52:04.000Z</published>
+    <updated>2020-09-03T20:24:07.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Node-js-Deployment&quot;&gt;&lt;a href=&quot;#Node-js-Deployment&quot; class=&quot;headerlink&quot; title=&quot;Node.js Deployment&quot;&gt;&lt;/a&gt;Node.js
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="devOps" scheme="http://wangruoyu.digital/tags/devOps/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单本地todo封装</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx24001nalvg35l1d0dg/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx24001nalvg35l1d0dg/</id>
+    <published>2020-08-29T10:52:04.000Z</published>
+    <updated>2020-07-29T18:36:40.053Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;利用localStorage封装todo逻辑&quot;&gt;&lt;a href=&quot;#利用localStorage封装todo逻辑&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+      <category term="DOM" scheme="http://wangruoyu.digital/tags/DOM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Next.js For SSR</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx25001qalvg0f5hcdui/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx25001qalvg0f5hcdui/</id>
+    <published>2020-08-16T16:09:04.000Z</published>
+    <updated>2020-08-16T23:09:58.828Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;next-js-与-SSR&quot;&gt;&lt;a href=&quot;#next-js-与-SSR&quot; class=&quot;headerlink&quot; title=&quot;next.js 与 SSR&quot;&gt;&lt;/a&gt;next.js 与
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="next.js" scheme="http://wangruoyu.digital/tags/next-js/"/>
+    
+      <category term="react.js" scheme="http://wangruoyu.digital/tags/react-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Form upload</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1z001aalvgcemw5ilm/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1z001aalvgcemw5ilm/</id>
+    <published>2020-08-02T11:52:04.000Z</published>
+    <updated>2020-08-02T20:10:29.940Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;基础概要&quot;&gt;&lt;a href=&quot;#基础概要&quot; class=&quot;headerlink&quot; title=&quot;基础概要&quot;&gt;&lt;/a&gt;基础概要&lt;/h2&gt;&lt;h3 id=&quot;同步上传多文件简单实现&quot;&gt;&lt;a href=&quot;#同步上传多文件简单实现&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>lazyLoadAndDebounce</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx23001kalvg8jd1d1ry/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx23001kalvg8jd1d1ry/</id>
+    <published>2020-07-28T12:52:04.000Z</published>
+    <updated>2020-07-29T18:55:50.646Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何实现图片懒加载？&quot;&gt;&lt;a href=&quot;#如何实现图片懒加载？&quot; class=&quot;headerlink&quot; title=&quot;如何实现图片懒加载？&quot;&gt;&lt;/a&gt;如何实现图片懒加载？&lt;/h2&gt;&lt;h3 id=&quot;思路：&quot;&gt;&lt;a href=&quot;#思路：&quot; class=&quot;headerlink&quot; title=&quot;思路：&quot;&gt;&lt;/a&gt;思路：&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;存储图片地址，可利用DOM中自带的dataset属性&lt;/li&gt;
+&lt;li&gt;等用户可视窗口进入图片区域后，通过存储在dataset中的图片地址替换img的src属性&lt;/li&gt;
+&lt;li&gt;移除dataset中存储的地址&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.addEventListener(&lt;span class=&quot;string&quot;&gt;&#39;scroll&#39;&lt;/span&gt;, lazyLoad);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; images = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.querySelectorAll(&lt;span class=&quot;string&quot;&gt;&#39;img&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; n = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; lazyLoad = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;e&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = n; i &amp;lt; images.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; img = images[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 当图片一半以上暴露在可视窗口，执行下列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; showAt = &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.pageYOffset + &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.innerHeight - img.height / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; isAtHalf = showAt &amp;gt; img.offsetTop;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (isAtHalf) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; src = img.dataset.src;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      img.setAttribute(&lt;span class=&quot;string&quot;&gt;&#39;src&#39;&lt;/span&gt;, src);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      img.removeAttribute(&lt;span class=&quot;string&quot;&gt;&#39;data-src&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      n++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; 需要注意的是， 这里利用了变量&lt;code&gt;n&lt;/code&gt;来判断图片是否加载完成，避免在滚动时重复执行造成&lt;code&gt;undefined&lt;/code&gt;错误。 因为当任意图片再次执行此&lt;code&gt;for&lt;/code&gt;循环时，第一次循环已经清除了&lt;code&gt;data-src&lt;/code&gt;属性，因此会报&lt;code&gt;undefinded&lt;/code&gt;错误。&lt;/p&gt;
+&lt;h4 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;p&gt;上述方法中，当用户滚动时，事件监听函数会频繁触发，因此可能会造成不必要的性能损耗，因此就需要防抖函数来限制其触发频率。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+      <category term="lazyLoading" scheme="http://wangruoyu.digital/tags/lazyLoading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DOM &amp; Event in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx20001dalvggar1779j/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx20001dalvggar1779j/</id>
+    <published>2020-07-01T13:59:04.000Z</published>
+    <updated>2020-07-02T20:46:41.286Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;DOM操作&quot;&gt;&lt;a href=&quot;#DOM操作&quot; class=&quot;headerlink&quot; title=&quot;DOM操作&quot;&gt;&lt;/a&gt;DOM操作&lt;/h2&gt;&lt;h3 id=&quot;getElement…-与querySelector的区别&quot;&gt;&lt;a href=&quot;#getElement…-与querySelector的区别&quot; class=&quot;headerlink&quot; title=&quot;getElement… 与querySelector的区别&quot;&gt;&lt;/a&gt;getElement… 与querySelector的区别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用getElement…返回的都是动态的集合&lt;/li&gt;
+&lt;li&gt;使用querySelectorAll返回的是静态集合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;获取属性特征&quot;&gt;&lt;a href=&quot;#获取属性特征&quot; class=&quot;headerlink&quot; title=&quot;获取属性特征&quot;&gt;&lt;/a&gt;获取属性特征&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用特征操作时属性名称不区分大小写&lt;/li&gt;
+&lt;li&gt;特征值都为字符串类型，如需数值类型需要进行转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Method&lt;/th&gt;
+&lt;th&gt;Des&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;getAttribute&lt;/td&gt;
+&lt;td&gt;获取属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;setAttribute&lt;/td&gt;
+&lt;td&gt;设置属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;removeAttribute&lt;/td&gt;
+&lt;td&gt;删除属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hasAttribute&lt;/td&gt;
+&lt;td&gt;属性检测&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Note: 大部分情况下可以通过属性该更改并可同步到特征集中。但是像input中的value属性需要通过特征方法如&lt;code&gt;setAttribute&lt;/code&gt;更改可同步到特征集中。&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;login&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;secret&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; login = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.querySelector(&lt;span class=&quot;string&quot;&gt;`[name=&#39;login&#39;]`&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;actionscript&quot;&gt;login.value =  &lt;span class=&quot;string&quot;&gt;&#39;12345&#39;&lt;/span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(login.getAttribute(&lt;span class=&quot;string&quot;&gt;&#39;value&#39;&lt;/span&gt;)) &lt;span class=&quot;comment&quot;&gt;// &#39;secret&#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;actionscript&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//---------------------------------------------------&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;actionscript&quot;&gt;login.setAttribute(&lt;span class=&quot;string&quot;&gt;&#39;value&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;12345&#39;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(login.value) &lt;span class=&quot;comment&quot;&gt;// &#39;12345&#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+      <category term="DOM" scheme="http://wangruoyu.digital/tags/DOM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx26001ualvg7hmzblfw/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx26001ualvg7hmzblfw/</id>
+    <published>2020-06-30T10:59:04.000Z</published>
+    <updated>2020-07-02T20:10:54.742Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What-is-a-Promise&quot;&gt;&lt;a href=&quot;#What-is-a-Promise&quot; class=&quot;headerlink&quot; title=&quot;What is a Promise?&quot;&gt;&lt;/a&gt;What is a Promise?&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;MDN&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;Promise&lt;/code&gt; is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action’s eventual success value or failure reason.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A &lt;code&gt;Promise&lt;/code&gt; is in one of these states:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;pending&lt;/em&gt;: initial state, neither fulfilled nor rejected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;fulfilled&lt;/em&gt;: meaning that the operation completed successfully.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;rejected&lt;/em&gt;: meaning that the operation failed&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Promise-chain&quot;&gt;&lt;a href=&quot;#Promise-chain&quot; class=&quot;headerlink&quot; title=&quot;Promise chain&quot;&gt;&lt;/a&gt;Promise chain&lt;/h2&gt;&lt;p&gt;A pending promise can either be fulfilled with a value, or rejected with a reason (error). When either of these options happens, the associated handlers queued up by a promise’s then method are called&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;/2020/cket8yx26001ualvg7hmzblfw/promise-chain.png&quot; alt=&quot;promise-chain&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The methods &lt;code&gt;promise.then(),&lt;/code&gt; &lt;code&gt;promise.catch(), and promise.finally()&lt;/code&gt; are used to associate further action with a promise that becomes settled.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  链式加载&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;load&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;file&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Promise&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;resolve, reject&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; script = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createElement(&lt;span class=&quot;string&quot;&gt;&quot;script&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    script.src = file;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    script.onload = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; =&amp;gt;&lt;/span&gt; resolve(script);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    script.onerror = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; =&amp;gt;&lt;/span&gt; reject();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body.appendChild(script);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;load(&lt;span class=&quot;string&quot;&gt;&quot;js/1.js&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.then(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; =&amp;gt;&lt;/span&gt; load(&lt;span class=&quot;string&quot;&gt;&quot;js/2.js&quot;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.then(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; =&amp;gt;&lt;/span&gt; &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;here&lt;/span&gt;&amp;gt;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;使用promise封装定时器&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//封装定时器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//定时器为宏任务队列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;timeOut&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;delay=&lt;span class=&quot;number&quot;&gt;3000&lt;/span&gt;,callback&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Promise&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;resolve&lt;/span&gt;=&amp;gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;=&amp;gt;&lt;/span&gt;callback(resolve),delay)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//delay to trigger Promise return resolve to callback&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//--------------------------------------------&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; timeInterval = &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;callback, delay = &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; id = setInterval(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; =&amp;gt;&lt;/span&gt; callback(id), delay)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;timeInterval(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;id&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; div = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.querySelector(&lt;span class=&quot;string&quot;&gt;&quot;div&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; left = &lt;span class=&quot;built_in&quot;&gt;parseInt&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.getComputedStyle(div).left)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  div.style.left = left + &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;px&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (left &amp;gt; &lt;span class=&quot;number&quot;&gt;250&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    clearInterval(id)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Class in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1j000ialvg2rtlfajt/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1j000ialvg2rtlfajt/</id>
+    <published>2020-06-29T10:59:04.000Z</published>
+    <updated>2020-06-29T21:45:40.237Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;类的本质&quot;&gt;&lt;a href=&quot;#类的本质&quot; class=&quot;headerlink&quot; title=&quot;类的本质&quot;&gt;&lt;/a&gt;类的本质&lt;/h3&gt;&lt;p&gt;类的本质是函数&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prototype in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx280020alvga5954rs0/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx280020alvga5954rs0/</id>
+    <published>2020-06-28T07:59:04.000Z</published>
+    <updated>2020-06-28T19:37:33.109Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JavaScript-所有对象都是对象的实例&quot;&gt;&lt;a href=&quot;#JavaScript-所有对象都是对象的实例&quot; class=&quot;headerlink&quot; title=&quot;JavaScript: 所有对象都是对象的实例&quot;&gt;&lt;/a&gt;JavaScript: 所有对象都是对象的实例&lt;/h2&gt;&lt;p&gt;MDN：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; JavaScript only has one construct: objects.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;什么是原型链？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When trying to access a property of an object, &lt;strong&gt;the property will not  only be sought on the object but on the prototype of the object,&lt;/strong&gt; the  prototype of the prototype, and so on until either a property with a  matching name is found or the end of the prototype chain is reached.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;prototype-vs-proto&quot;&gt;&lt;a href=&quot;#prototype-vs-proto&quot; class=&quot;headerlink&quot; title=&quot;prototype vs __proto__&quot;&gt;&lt;/a&gt;&lt;code&gt;prototype&lt;/code&gt; vs &lt;code&gt;__proto__&lt;/code&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;( &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Foo ).__proto__ === Foo.prototype;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;( &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Foo ).prototype === &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Foo(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Foo(&lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Constructor  function Foo also has its own &lt;code&gt;__proto__&lt;/code&gt; which is Function.prototype&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;__proto__&lt;/code&gt; is the actual object that is used in the lookup chain to resolve methods, etc.  &lt;code&gt;prototype&lt;/code&gt; is the object that is used to build &lt;code&gt;__proto__&lt;/code&gt; when you create an object with &lt;code&gt;new&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/cket8yx280020alvga5954rs0/inherit.png&quot; alt=&quot;inherit&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;__proto__&lt;/code&gt; 不是对象属性，理解为&lt;code&gt;prototype&lt;/code&gt; 的 &lt;code&gt;getter/setter&lt;/code&gt; 实现，是一个非标准定义&lt;/strong&gt; &lt;code&gt;__proto__&lt;/code&gt; 内部使用&lt;code&gt;getter/setter&lt;/code&gt; 控制值，所以只允许对象或null.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Object in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx27001xalvg7sme3t73/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx27001xalvg7sme3t73/</id>
+    <published>2020-06-27T11:59:04.000Z</published>
+    <updated>2020-06-27T18:59:34.799Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;OOP&quot;&gt;&lt;a href=&quot;#OOP&quot; class=&quot;headerlink&quot; title=&quot;OOP&quot;&gt;&lt;/a&gt;OOP&lt;/h2&gt;&lt;p&gt;对象和函数、数组一样是引用类型，即复制只会复制引用地址&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; obj1 = &amp;#123; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;wang&quot;&lt;/span&gt; &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; obj2 = obj1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(obj1===obj2); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;对象的解构&quot;&gt;&lt;a href=&quot;#对象的解构&quot; class=&quot;headerlink&quot; title=&quot;对象的解构&quot;&gt;&lt;/a&gt;对象的解构&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Object Deconstruction&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; web = &amp;#123; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;wang&quot;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;age&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt; &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//把name赋值给变量w&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &amp;#123; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;:w, gender=&lt;span class=&quot;string&quot;&gt;&quot;male&quot;&lt;/span&gt;&amp;#125; = web;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(w); &lt;span class=&quot;comment&quot;&gt;//&#39;wang&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Rest parameters 展开语法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; web_new = &amp;#123; ...web, &lt;span class=&quot;attr&quot;&gt;gender&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;male&quot;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;zhu&quot;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(web_new);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(web)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Object Deconstruction for function&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createElement&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;option = &amp;#123;&amp;#125;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//若右值不为空则取右值即参数option对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//默认option为空对象，因此取默认赋值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            width = &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            height = &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            backgroundColor = &lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            parentElement = &lt;span class=&quot;string&quot;&gt;&quot;body&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; = option;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; div = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createElement(&lt;span class=&quot;string&quot;&gt;&quot;div&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; container = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.querySelector(parentElement);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    div.style.width = width + &lt;span class=&quot;string&quot;&gt;&quot;px&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    div.style.height = height + &lt;span class=&quot;string&quot;&gt;&quot;px&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    div.style.backgroundColor = backgroundColor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    container.appendChild(div);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;createElement(&amp;#123;&lt;span class=&quot;attr&quot;&gt;backgroundColor&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Funtion in JavaScript</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx21001falvg33wjgmgr/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx21001falvg33wjgmgr/</id>
+    <published>2020-06-26T07:17:04.000Z</published>
+    <updated>2020-06-27T14:34:49.528Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;函数声明与优先级&quot;&gt;&lt;a href=&quot;#函数声明与优先级&quot; class=&quot;headerlink&quot; title=&quot;函数声明与优先级&quot;&gt;&lt;/a&gt;函数声明与优先级&lt;/h2&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全局标准声明&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;num&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ++num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全局匿名函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; add = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;num&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; --num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全局标准声明优先级高于赋值声明因此输出：2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(add(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)); &lt;span class=&quot;comment&quot;&gt;//2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全局声明函数优先级会被提升，但是变量匿名函数优先级不会提升&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;函数参数&quot;&gt;&lt;a href=&quot;#函数参数&quot; class=&quot;headerlink&quot; title=&quot;函数参数&quot;&gt;&lt;/a&gt;函数参数&lt;/h2&gt;&lt;p&gt;形参数量大于实参时，没有传参的形参值为 undefined&lt;/p&gt;
+&lt;p&gt;实参数量大于形参时，多于的实参将忽略并不会报错&lt;/p&gt;
+&lt;p&gt;在函数内部，arguments变量为所有参数的集合&lt;/p&gt;
+&lt;p&gt;当然也可以使用rest paramter把参数展开&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; restParam = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;...args&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(args)&lt;span class=&quot;comment&quot;&gt;//为所有参数的集合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;使用函数解析模版字符串&quot;&gt;&lt;a href=&quot;#使用函数解析模版字符串&quot; class=&quot;headerlink&quot; title=&quot;使用函数解析模版字符串&quot;&gt;&lt;/a&gt;使用函数解析模版字符串&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaSript" scheme="http://wangruoyu.digital/tags/JavaSript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(七)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1y0018alvgf0a6e9gi/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1y0018alvgf0a6e9gi/</id>
+    <published>2020-06-19T16:52:04.000Z</published>
+    <updated>2020-06-27T14:35:15.598Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS学习笔记（七）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（七）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（七）&quot;&gt;&lt;/a&gt;CSS学习笔记（七）&lt;/h1&gt;&lt;h2 id=&quot;CSS过渡-transition&quot;&gt;&lt;a href=&quot;#CSS过渡-transition&quot; class=&quot;headerlink&quot; title=&quot;CSS过渡 transition&quot;&gt;&lt;/a&gt;CSS过渡 transition&lt;/h2&gt;&lt;p&gt; 过渡属性&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transition-property:[...property]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;过渡时间&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transition-duration:[...time]&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;延迟触发&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transition-delay:[...time]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;过渡效果&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transition-timing-function:[linear||ease-in||ease-out||ease-in-out]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;过渡属性的缩写，其中transition-duration必填&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transition:[property1] [transition-timing-function] transition-duration [transition-delay],&lt;/code&gt; &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(六)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1x0014alvg3ge585hi/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1x0014alvg3ge585hi/</id>
+    <published>2020-06-18T19:34:04.000Z</published>
+    <updated>2020-06-25T15:45:14.419Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS学习笔记（六）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（六）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（六）&quot;&gt;&lt;/a&gt;CSS学习笔记（六）&lt;/h1&gt;&lt;h2 id=&quot;变形与透视&quot;&gt;&lt;a href=&quot;#变形与透视&quot; class=&quot;headerlink&quot; title=&quot;变形与透视&quot;&gt;&lt;/a&gt;变形与透视&lt;/h2&gt;&lt;h3 id=&quot;translate-控制元素三纬运动&quot;&gt;&lt;a href=&quot;#translate-控制元素三纬运动&quot; class=&quot;headerlink&quot; title=&quot;translate 控制元素三纬运动&quot;&gt;&lt;/a&gt;translate 控制元素三纬运动&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;X axis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;transform:translateX(200px)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Y axis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;transform:translateY(200px)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;XY shorthand&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;transfrom:translate(200px,200px)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Z axis has no relative unit 因此只能使用绝对单位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;transfrom:translateZ(200px)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3D shorthand&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;transfrom:translate3d(20%,0,100px)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;scale-控制缩放&quot;&gt;&lt;a href=&quot;#scale-控制缩放&quot; class=&quot;headerlink&quot; title=&quot;scale 控制缩放&quot;&gt;&lt;/a&gt;scale 控制缩放&lt;/h3&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*example*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;div-nth-child&lt;/span&gt;(1)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;transform&lt;/span&gt;:&lt;span class=&quot;built_in&quot;&gt;scaleX&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;/*x轴尺寸放大原来的1倍*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;div-nth-child&lt;/span&gt;(2)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;transform&lt;/span&gt;:&lt;span class=&quot;built_in&quot;&gt;scaleY&lt;/span&gt;(.&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;/*y轴尺寸缩小原来的1倍*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;div-nth-child&lt;/span&gt;(2)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;transform&lt;/span&gt;:&lt;span class=&quot;built_in&quot;&gt;scale&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, .&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;/*Shorthand*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;transform-基点&quot;&gt;&lt;a href=&quot;#transform-基点&quot; class=&quot;headerlink&quot; title=&quot;transform 基点&quot;&gt;&lt;/a&gt;transform 基点&lt;/h3&gt;&lt;p&gt;&lt;code&gt;transform-orign:left top //从左上角开始缩放&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;rotate-旋转&quot;&gt;&lt;a href=&quot;#rotate-旋转&quot; class=&quot;headerlink&quot; title=&quot;rotate 旋转&quot;&gt;&lt;/a&gt;rotate 旋转&lt;/h3&gt;&lt;p&gt;&lt;code&gt;transform:rotateX(45deg)&lt;/code&gt; 向上翻转45度&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transform:rotateY(45deg)&lt;/code&gt;向右翻转45度&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transform:rotateZ(45deg)&lt;/code&gt; 平面旋转45度 或&lt;code&gt;transform:rotate(45deg)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;skew-倾斜&quot;&gt;&lt;a href=&quot;#skew-倾斜&quot; class=&quot;headerlink&quot; title=&quot;skew 倾斜&quot;&gt;&lt;/a&gt;skew 倾斜&lt;/h3&gt;&lt;p&gt;&lt;code&gt;transform:skewX(45deg)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transform:skewY(45deg)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;transform:skew(45deg,45deg)&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(五)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1x0012alvg4dq92uib/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1x0012alvg4dq92uib/</id>
+    <published>2020-06-13T19:34:04.000Z</published>
+    <updated>2020-06-20T11:19:41.676Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;CSS学习笔记（五）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（五）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（五）&quot;&gt;&lt;/a&gt;CSS学习笔记（五）&lt;/h1&gt;&lt;h2 id=&quot;Grid-栅格系统&quot;&gt;&lt;a href=&quot;#Grid-栅格系统&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(四)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1w000zalvg095599bi/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1w000zalvg095599bi/</id>
+    <published>2020-06-13T12:34:04.000Z</published>
+    <updated>2020-06-20T11:02:35.964Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS学习笔记（四）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（四）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（四）&quot;&gt;&lt;/a&gt;CSS学习笔记（四）&lt;/h1&gt;&lt;h2 id=&quot;Flex-弹性布局&quot;&gt;&lt;a href=&quot;#Flex-弹性布局&quot; class=&quot;headerlink&quot; title=&quot;Flex 弹性布局&quot;&gt;&lt;/a&gt;Flex 弹性布局&lt;/h2&gt;&lt;h3 id=&quot;display-弹性盒子声明&quot;&gt;&lt;a href=&quot;#display-弹性盒子声明&quot; class=&quot;headerlink&quot; title=&quot;display 弹性盒子声明&quot;&gt;&lt;/a&gt;display 弹性盒子声明&lt;/h3&gt;&lt;p&gt;This defines a flex container; inline or block depending on the given value. It enables a flex context for all its direct children.&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.container&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: flex; &lt;span class=&quot;comment&quot;&gt;/* or inline-flex */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h3 id=&quot;内部排列方式-flex-direction&quot;&gt;&lt;a href=&quot;#内部排列方式-flex-direction&quot; class=&quot;headerlink&quot; title=&quot;内部排列方式 flex-direction&quot;&gt;&lt;/a&gt;内部排列方式 flex-direction&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/2020/cket8yx1w000zalvg095599bi/flex-direction.png&quot; alt=&quot;flex-direction&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.container&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;flex-direction&lt;/span&gt;: row | row-reverse | column | column-reverse;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: flex-direction默认为row&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(三)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1v000walvggvwqah2b/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1v000walvggvwqah2b/</id>
+    <published>2020-06-12T14:31:04.000Z</published>
+    <updated>2020-06-12T04:03:03.141Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS学习笔记（三）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（三）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（三）&quot;&gt;&lt;/a&gt;CSS学习笔记（三）&lt;/h1&gt;&lt;h2 id=&quot;盒子模型&quot;&gt;&lt;a href=&quot;#盒子模型&quot; class=&quot;headerlink&quot; title=&quot;盒子模型&quot;&gt;&lt;/a&gt;盒子模型&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2020/cket8yx1v000walvggvwqah2b/box-model.png&quot; alt=&quot;box-model&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;外边距合并：如果两个盒子的外边距重叠，则只取最大那边的外边距值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;box-sizing:border-box;&lt;/code&gt;  传统意义上“width or height + padding + border = actual width or height”. 如果设置了&lt;code&gt;box-sizing:border-box;&lt;/code&gt;属性，则”width or height = padding + border + content width or height”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;border-radius:50%&lt;/code&gt;绘制圆边框&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;outline:solid 2px #ddd&lt;/code&gt; 轮廓线不会占用空间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;width:fit-content&lt;/code&gt; &lt;code&gt;width:max-content&lt;/code&gt; &lt;code&gt;width:min-content&lt;/code&gt;  根据根据内容来决定大小&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(二)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1u000talvge946h086/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1u000talvge946h086/</id>
+    <published>2020-06-10T21:25:04.000Z</published>
+    <updated>2020-06-20T10:55:39.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;CSS学习笔记（二）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（二）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（二）&quot;&gt;&lt;/a&gt;CSS学习笔记（二）&lt;/h1&gt;&lt;h2 id=&quot;CSS文本&quot;&gt;&lt;a href=&quot;#CSS文本&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-基础(一)</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1t000qalvg7d7r3km4/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1t000qalvg7d7r3km4/</id>
+    <published>2020-06-09T16:52:04.000Z</published>
+    <updated>2020-06-22T04:57:32.357Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS学习笔记（一）&quot;&gt;&lt;a href=&quot;#CSS学习笔记（一）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记（一）&quot;&gt;&lt;/a&gt;CSS学习笔记（一）&lt;/h1&gt;&lt;h2 id=&quot;CSS的导入&quot;&gt;&lt;a href=&quot;#CSS的导入&quot; class=&quot;headerlink&quot; title=&quot;CSS的导入&quot;&gt;&lt;/a&gt;CSS的导入&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;CSS文件三种的引入方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;link href=&amp;#39;[filePaht]&amp;#39;, rel=&amp;#39;stylesheet&amp;#39; type=&amp;quot;text/css&amp;quot;&amp;gt;&amp;lt;/link&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;font-size:2rem&amp;quot;&amp;gt;ruoyu&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;head&amp;gt; &amp;lt;style&amp;gt;div{font-size:2rem}&amp;lt;style&amp;gt; &amp;lt;/head&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;在CSS文件中导入其他css样式：&lt;code&gt;@import url([filePath]) [all || screen || print] and (min-width:678px)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="CSS3" scheme="http://wangruoyu.digital/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS-Closure</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx22001ialvg5fe0fav7/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx22001ialvg5fe0fav7/</id>
+    <published>2020-06-07T20:04:04.000Z</published>
+    <updated>2020-06-27T15:10:47.293Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JS的作用域与闭包&quot;&gt;&lt;a href=&quot;#JS的作用域与闭包&quot; class=&quot;headerlink&quot; title=&quot;JS的作用域与闭包&quot;&gt;&lt;/a&gt;JS的作用域与闭包&lt;/h1&gt;&lt;h2 id=&quot;What-is-closure&quot;&gt;&lt;a href=&quot;#What-is-closure&quot; class=&quot;headerlink&quot; title=&quot;What is closure?&quot;&gt;&lt;/a&gt;What is &lt;code&gt;closure&lt;/code&gt;?&lt;/h2&gt;&lt;p&gt;A &lt;strong&gt;closure&lt;/strong&gt; is the combination of a function bundled together (enclosed) with references to its surrounding state (the &lt;strong&gt;lexical environment&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;根据MDN的定义，闭包就是说内部函数可以访问外部函数的作用域。每一个Javascript函数在被创建时都会形成闭包。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;makeFunc&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;string&quot;&gt;&#39;Mozilla&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;displayName&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alert(name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; displayName;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; myFunc = makeFunc();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;myFunc();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;正如文档所说 &lt;em&gt;A closure is the combination of a function and the lexical environment within which that function was declared.&lt;/em&gt; 因此当&lt;code&gt;makeFunc函数实例话给变量&lt;/code&gt;myFunc&lt;code&gt;时，其内部的&lt;/code&gt;displayName&lt;code&gt;保留了它的语法环境包括变量&lt;/code&gt;name`.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://wangruoyu.digital/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CORS-solutions</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1n000nalvg309vd25i/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1n000nalvg309vd25i/</id>
+    <published>2020-06-06T21:52:04.000Z</published>
+    <updated>2020-06-16T20:34:10.354Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;跨域方式实现原理&quot;&gt;&lt;a href=&quot;#跨域方式实现原理&quot; class=&quot;headerlink&quot; title=&quot;跨域方式实现原理&quot;&gt;&lt;/a&gt;跨域方式实现原理&lt;/h1&gt;&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;一、What-is-CORS&quot;&gt;&lt;a href=&quot;#一、What-is-CORS&quot; class=&quot;headerlink&quot; title=&quot;一、What is CORS?&quot;&gt;&lt;/a&gt;一、What is CORS?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Cross-Origin Resource Sharing&lt;/strong&gt; (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/CORS&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CORS&lt;/a&gt;) is a mechanism that uses additional &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/HTTP&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;HTTP&lt;/a&gt; headers to tell browsers to give a web application running at one &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/origin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;origin&lt;/a&gt;, access to selected resources from a different origin. A web application executes a cross-origin HTTP request when it requests a resource that has a different origin (domain, protocol, or port) from its own.&lt;/p&gt;
+&lt;h3 id=&quot;1-What-is-the-same-origin-security-policy&quot;&gt;&lt;a href=&quot;#1-What-is-the-same-origin-security-policy&quot; class=&quot;headerlink&quot; title=&quot;1.What is the same-origin security policy?&quot;&gt;&lt;/a&gt;1.What is the same-origin security policy?&lt;/h3&gt;&lt;p&gt;The same-origin policy is very restrictive. Under this policy, a document (i.e., like a web page) hosted on server A can only interact with other documents that are also on server A. In short, the same-origin policy enforces that documents that interact with each other have the same &lt;em&gt;origin&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;An origin is made up of the following three parts: the protocol, host, and port number.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img src=&quot;/2020/cket8yx1n000nalvg309vd25i/same-origin.png&quot; alt=&quot;same-origin&quot;&gt;&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="http://wangruoyu.digital/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>react-pattern</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx290022alvgci0z64bv/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx290022alvgci0z64bv/</id>
+    <published>2020-05-31T18:51:04.000Z</published>
+    <updated>2020-07-28T22:30:50.553Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Pattern-of-React-Components&quot;&gt;&lt;a href=&quot;#Pattern-of-React-Components&quot; class=&quot;headerlink&quot; title=&quot;Pattern of React
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="react" scheme="http://wangruoyu.digital/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Beijing_data_vis_3</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1g000calvgfp9f6215/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1g000calvgfp9f6215/</id>
+    <published>2020-05-02T18:51:04.000Z</published>
+    <updated>2020-06-07T04:35:00.970Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Ready-to-code&quot;&gt;&lt;a href=&quot;#Ready-to-code&quot; class=&quot;headerlink&quot; title=&quot;Ready to code?&quot;&gt;&lt;/a&gt;Ready to code?&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在开始之前，先简单复习一下d3如何与react兼容的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;d3, data-driven documents,是JavaScript的一个库，用来处理和展示数据的。通过直接操控DOM节点来进行对元素的增减修改&lt;/li&gt;
+&lt;li&gt;而react是采用一种非常聪明的方式来操控DOM节点—模拟并与实际DOM节点比较来更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/cket8yx1g000calvgfp9f6215/react_DOM.png&quot; alt=&quot;reactDOM&quot;&gt;&lt;/p&gt;
+&lt;p&gt;因此如果‘不恰当’使用可能会引起相互干扰，不可预知的问题。就像一对夫妻一样，如果他们一直在做同一件事，那么麻烦不可避免:)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最简单的方式就是给彼此留有活动空间！让老婆去看剧，自己洗碗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此我遵循的基本理念是&lt;strong&gt;让d3老婆独自在卧室看综艺，react自己在厨房管理自己的小组件。&lt;/strong&gt; 等饭做好了，喊老婆吃饭。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vis" scheme="http://wangruoyu.digital/tags/vis/"/>
+    
+      <category term="python" scheme="http://wangruoyu.digital/tags/python/"/>
+    
+      <category term="d3" scheme="http://wangruoyu.digital/tags/d3/"/>
+    
+      <category term="react" scheme="http://wangruoyu.digital/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Beijing_data_vis_2</title>
+    <link href="http://wangruoyu.digital/2020/cket8yx1e000balvgbsixh9u9/"/>
+    <id>http://wangruoyu.digital/2020/cket8yx1e000balvgbsixh9u9/</id>
+    <published>2020-04-29T16:51:04.000Z</published>
+    <updated>2020-06-07T04:34:23.699Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Data-Process&quot;&gt;&lt;a href=&quot;#Data-Process&quot; class=&quot;headerlink&quot; title=&quot;Data Process&quot;&gt;&lt;/a&gt;Data Process&lt;/h1&gt;&lt;h4 id=&quot;接下来开始处理数据&quot;&gt;&lt;a href=&quot;#接下来开始处理数据&quot; class=&quot;headerlink&quot; title=&quot;接下来开始处理数据&quot;&gt;&lt;/a&gt;接下来开始处理数据&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Loading Lib&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import pandas as pd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import numpy as np&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import seaborn as sns&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import matplotlib.pyplot as plt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import re&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Import json&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Tourism Attractions data clean&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hotSpot &amp;#x3D; pd.read_csv(&amp;quot;bj_hotspots.csv&amp;quot;,encoding&amp;#x3D;&amp;quot;utf-8&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/2020/cket8yx1e000balvgbsixh9u9/hotSpot.png&quot; alt=&quot;hotSpots&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vis" scheme="http://wangruoyu.digital/tags/vis/"/>
+    
+      <category term="python" scheme="http://wangruoyu.digital/tags/python/"/>
+    
+      <category term="d3" scheme="http://wangruoyu.digital/tags/d3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Beijing  Airbnb Visualisation</title>
+    <link href="http://wangruoyu.digital/2020/beijing-vis/"/>
+    <id>http://wangruoyu.digital/2020/beijing-vis/</id>
+    <published>2020-04-23T20:51:04.000Z</published>
+    <updated>2020-04-30T18:31:16.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;第一步，把数据搞到手&quot;&gt;&lt;a href=&quot;#第一步，把数据搞到手&quot; class=&quot;headerlink&quot; title=&quot;第一步，把数据搞到手&quot;&gt;&lt;/a&gt;第一步，把数据搞到手&lt;/h1&gt;&lt;h2 id=&quot;Housing-Price-Beijing-Lianjia&quot;&gt;&lt;a href=&quot;#Housing-Price-Beijing-Lianjia&quot; class=&quot;headerlink&quot; title=&quot;Housing Price Beijing [Lianjia]&quot;&gt;&lt;/a&gt;Housing Price Beijing [Lianjia]&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Beijing regional housing price from Lianjia.com&lt;br&gt;&lt;a href=&quot;&#39;https://bj.lianjia.com/fangjia/&#39;&quot;&gt;Lianjia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Based on the mean price of the used houses.&lt;br&gt;Start Date:25/3/2020;&lt;br&gt;Ruoyu Wang&lt;/p&gt;
+&lt;p&gt;进入链家北京二手房信息网站， 打开开发者工具，点击Network会惊奇的发现有一个有priceMap的请求文件，接下来就用python来简单抓取一下吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/beijing-vis/lianjia.png&quot; alt=&quot;lianjia&quot;&gt;&lt;/p&gt;
+&lt;p&gt;1.Import Libs&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import requests&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import json&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import time&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import pandas as pd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.Define method&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;def get_page(url,header) :&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    my_headers &amp;#x3D; &amp;#123;&amp;quot;User-Agent&amp;quot;: header&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    try:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        page &amp;#x3D; requests.get(url,headers &amp;#x3D; my_headers) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return page&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    except Exception as error:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        print(str(error))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vis" scheme="http://wangruoyu.digital/tags/vis/"/>
+    
+      <category term="python" scheme="http://wangruoyu.digital/tags/python/"/>
+    
+      <category term="d3" scheme="http://wangruoyu.digital/tags/d3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OSINT-1  How to utilise search engines</title>
+    <link href="http://wangruoyu.digital/2020/osint-1/"/>
+    <id>http://wangruoyu.digital/2020/osint-1/</id>
+    <published>2020-03-14T02:51:04.000Z</published>
+    <updated>2020-04-29T03:32:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;OSINT-1-How-to-utilise-search-engines&quot;&gt;&lt;a href=&quot;#OSINT-1-How-to-utilise-search-engines&quot; class=&quot;headerlink&quot; title=&quot;OSINT-1  How to utilise search engines&quot;&gt;&lt;/a&gt;OSINT-1  How to utilise search engines&lt;/h1&gt;&lt;blockquote&gt;
+&lt;h3 id=&quot;Some-Operators&quot;&gt;&lt;a href=&quot;#Some-Operators&quot; class=&quot;headerlink&quot; title=&quot;Some Operators&quot;&gt;&lt;/a&gt;Some Operators&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;“”&lt;br&gt;Force an exact-match search. The double quotation marks will help return results including keywords inside.&lt;/li&gt;
+&lt;li&gt;*&lt;br&gt;An asterisk character, known as a wildcard, to match one or more words in a phrase&lt;/li&gt;
+&lt;li&gt;OR&lt;br&gt;Search for X or Y. This will return results related to X or Y, or both. Note: The pipe ( | ) operator can also be used in place of “OR.”&lt;/li&gt;
+&lt;li&gt;AND&lt;br&gt;Similar to OR ( | ), can be used in place of “&amp;amp;” Note: It doesn’t really make much difference for regular searches, as Google defaults to “AND” anyway. But it’s very useful when paired with other operators.
+    
+    </summary>
+    
+    
+      <category term="技能" scheme="http://wangruoyu.digital/categories/%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="OSINT" scheme="http://wangruoyu.digital/tags/OSINT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>About Me</title>
+    <link href="http://wangruoyu.digital/2020/about/"/>
+    <id>http://wangruoyu.digital/2020/about/</id>
+    <published>2020-02-17T15:17:04.000Z</published>
+    <updated>2020-09-04T01:21:05.210Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Studying Computational &amp;amp; Data Journalism , Cardiff, the UK.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Ruoyu-Wang&quot;&gt;&lt;a href=&quot;#Ruoyu-Wang&quot; class=&quot;headerlink&quot; title=&quot;Ruoyu Wang&quot;&gt;&lt;/a&gt;&lt;strong&gt;Ruoyu Wang&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Ruoyu-Klaus&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;mailto:ruoyuwangruoyu@hotmail.com&quot;&gt;Email&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="me" scheme="http://wangruoyu.digital/tags/me/"/>
+    
+  </entry>
+  
+</feed>

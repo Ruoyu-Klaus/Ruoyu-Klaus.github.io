@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Object in JavaScript |  Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-object-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Object in JavaScript
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx27001xalvg7sme3t73/" class="article-date">
+  <time datetime="2020-06-27T11:59:04.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h2><p>对象和函数、数组一样是引用类型，即复制只会复制引用地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">name</span>: <span class="string">"wang"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj1;</span><br><span class="line"><span class="built_in">console</span>.log(obj1===obj2); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象的解构"><a href="#对象的解构" class="headerlink" title="对象的解构"></a>对象的解构</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object Deconstruction</span></span><br><span class="line"><span class="keyword">let</span> web = &#123; <span class="attr">name</span>: <span class="string">"wang"</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;;</span><br><span class="line"><span class="comment">//把name赋值给变量w</span></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>:w, gender=<span class="string">"male"</span>&#125; = web;</span><br><span class="line"><span class="built_in">console</span>.log(w); <span class="comment">//'wang'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Rest parameters 展开语法</span></span><br><span class="line"><span class="keyword">let</span> web_new = &#123; ...web, <span class="attr">gender</span>: <span class="string">"male"</span>, <span class="attr">name</span>: <span class="string">"zhu"</span> &#125;</span><br><span class="line"><span class="built_in">console</span>.log(web_new);</span><br><span class="line"><span class="built_in">console</span>.log(web)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object Deconstruction for function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">option = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//若右值不为空则取右值即参数option对象</span></span><br><span class="line">    <span class="comment">//默认option为空对象，因此取默认赋值</span></span><br><span class="line">    <span class="keyword">let</span> &#123; </span><br><span class="line">            width = <span class="number">200</span>, </span><br><span class="line">            height = <span class="number">200</span>, </span><br><span class="line">            backgroundColor = <span class="string">"red"</span>,</span><br><span class="line">            parentElement = <span class="string">"body"</span>,</span><br><span class="line">        &#125; = option;</span><br><span class="line">    <span class="keyword">const</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">    <span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(parentElement);</span><br><span class="line">    div.style.width = width + <span class="string">"px"</span>;</span><br><span class="line">    div.style.height = height + <span class="string">"px"</span>;</span><br><span class="line">    div.style.backgroundColor = backgroundColor;</span><br><span class="line">    container.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line">createElement(&#123;<span class="attr">backgroundColor</span>:<span class="string">"blue"</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="对象值类型转换"><a href="#对象值类型转换" class="headerlink" title="对象值类型转换"></a>对象值类型转换</h3><ul>
+<li>如果声明需要字符串类型，调用顺序为 <code>toString &gt; valueOf</code></li>
+<li>如果场景需要数值类型，调用顺序为 <code>valueOf &gt; toString</code></li>
+<li>声明不确定时使用 <code>default</code> ，大部分对象的 <code>default</code> 会当数值使用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在对象内部自定义转换</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  name: <span class="string">"string"</span>,</span><br><span class="line">  num: <span class="number">1</span>,</span><br><span class="line">  valueOf: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"valueOf"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.num;</span><br><span class="line">  &#125;,</span><br><span class="line">  toString: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"toString"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(hd + <span class="number">1</span>); <span class="comment">//valueOf    2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'this is '</span>+obj); <span class="comment">//toString   this is string</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h3><p><code>hasOwnProperty</code>检测对象自身是否包含指定的属性，不检测原型链上继承的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">'wangruoyu'</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'name'</span>)); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>in</code>可以检测原型链上继承的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">name</span>: <span class="string">'wangruoyu'</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置hd为obj的新原型</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(obj1, obj2);</span><br><span class="line"><span class="built_in">console</span>.log(obj1); <span class="comment">// &#123;name:'wangruoyu'&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"age"</span> <span class="keyword">in</span> obj1); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.hasOwnProperty(<span class="string">"age"</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-assign-右侧合并"><a href="#Object-assign-右侧合并" class="headerlink" title="Object.assign 右侧合并"></a>Object.assign 右侧合并</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object assign</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement_2</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">        width: <span class="number">200</span>,</span><br><span class="line">        height: <span class="number">200</span>,</span><br><span class="line">        backgroundColor: <span class="string">"red"</span>,</span><br><span class="line">        parentElement : <span class="string">"body"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//偏向右侧的合并 类似于sql中的RIGHT JOIN</span></span><br><span class="line">    options = <span class="built_in">Object</span>.assign(options, params);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(options, <span class="literal">null</span>, <span class="number">2</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(createElement_2(&#123;<span class="attr">width</span>:<span class="number">400</span>&#125;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象的拷贝"><a href="#对象的拷贝" class="headerlink" title="对象的拷贝"></a>对象的拷贝</h2><p>由于对象是引用类型，因此直接复制操作实质是复制reference而不是值</p>
+<p>下面通过几种方法来实现深浅拷贝：</p>
+<p>Light-weight copy</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Duplicate object by for in</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">name</span>: <span class="string">"wangruoyu"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newObj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  	newObj[key] = obj[key];</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="keyword">return</span> newObj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Duplicate object by assign</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> newObj = <span class="built_in">Object</span>.assign(&#123;&#125;, obj);</span><br><span class="line">    <span class="keyword">return</span> newObj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Duplicate object by rest parameter</span></span><br><span class="line"><span class="keyword">var</span> copyWeb = &#123;...web&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Deep Duplication</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Duplicate for Mutiple Deep Object</span></span><br><span class="line"><span class="keyword">let</span> deepObj = &#123;</span><br><span class="line">    user: <span class="string">"wang"</span>,</span><br><span class="line">    info: &#123;</span><br><span class="line">        age: <span class="number">22</span>,</span><br><span class="line">        gender: <span class="string">"male"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    arr: [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//对于复杂结构的对象，浅拷贝方式会有问题</span></span><br><span class="line"><span class="comment">//像info,arr键中的值仍共享一个内存地址,如果变更则彼此都受牵连</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> copyDeepObj = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> deepObj) &#123;</span><br><span class="line">     copyDeepObj[key] = deepObj[key];</span><br><span class="line"> &#125;</span><br><span class="line">copyDeepObj.arr[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(copyDeepObj.arr) <span class="comment">// [0,20,30,40,50] </span></span><br><span class="line"><span class="built_in">console</span>.log(deepObj.arr) <span class="comment">//[0,20,30,40,50]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//利用函数递归进行对象深拷贝</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyDeepObject</span>(<span class="params">deepObj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = deepObj <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> deepObj) &#123;</span><br><span class="line">        newObj[key] = <span class="keyword">typeof</span> deepObj[key] == <span class="string">'object'</span> ? copyDeepObject(deepObj[key]) : deepObj[key];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="属性封装和保护"><a href="#属性封装和保护" class="headerlink" title="属性封装和保护"></a>属性封装和保护</h2><p>利用闭包保护属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Infor</span>(<span class="params">name.age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123; name, age&#125;;</span><br><span class="line"> 		<span class="keyword">this</span>.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> data.age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> std = <span class="keyword">new</span> Infor(<span class="string">'wang'</span>,<span class="number">19</span>)</span><br><span class="line"><span class="built_in">console</span>.log(std.getAge()) <span class="comment">// 19</span></span><br></pre></td></tr></table></figure>
+
+<p>获取/修改属性特征</p>
+<table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>configurable</td>
+<td>whether can use delete property, change property attributes,edit getter or setter</td>
+<td>true</td>
+</tr>
+<tr>
+<td>enumerable</td>
+<td>if this property shows up during enumeration of the properties on the corresponding object. Such as for/in, for/of or Object.keys() etc.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>writable</td>
+<td>whether the property can be changed</td>
+<td>true</td>
+</tr>
+<tr>
+<td>value</td>
+<td>The value associated with the property</td>
+<td>undefined</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  name:<span class="string">'wang'</span>,</span><br><span class="line">  age:<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Get property</span></span><br><span class="line"><span class="keyword">var</span> property = <span class="built_in">JSON</span>.stringify(<span class="built_in">Object</span>.getOwnPropertyDescriptors(a), <span class="literal">null</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// Edit property</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"age"</span>, &#123;</span><br><span class="line">    value: <span class="string">"22"</span>,</span><br><span class="line">    writable: <span class="literal">false</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Mutiple editing</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperties(b, &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line">        value: <span class="string">"wang"</span>,</span><br><span class="line">        writable: <span class="literal">false</span>,</span><br><span class="line">        enumerable: <span class="literal">false</span>,</span><br><span class="line">        configurable: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    age: &#123;</span><br><span class="line">        writable: <span class="literal">false</span>,</span><br><span class="line">        enumerable: <span class="literal">false</span>,</span><br><span class="line">        configurable: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prevent adding a new property to the Object</span></span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.isExtensible(a)); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Seal Object (unabele to 'add,delete,redefine' properties)</span></span><br><span class="line"><span class="built_in">Object</span>.seal(a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.isSealed(a)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Freeze Object(unabele to 'add,delete,redefine,enumerate')</span></span><br><span class="line"><span class="built_in">Object</span>.freeze(a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.isFrozen(a)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>访问器 getter &amp; setter</p>
+<p>属性只能在访问器和普通属性任选其一，不能共同存在</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use set/get syntax to protect data</span></span><br><span class="line"><span class="keyword">var</span> setData = &#123;</span><br><span class="line">    data: &#123; <span class="attr">name</span>: <span class="string">"wang"</span>, <span class="attr">age</span>: <span class="number">19</span> &#125;,</span><br><span class="line">    <span class="keyword">set</span> age(age) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> age !== <span class="string">"number"</span> || age &lt; <span class="number">1</span> || age &gt; <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"wrong type of age"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.data.age = age;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span> age() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.data.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">setData.age = <span class="number">10</span> </span><br><span class="line"><span class="built_in">console</span>.log(setData.age) <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<p>利用访问器来储存和获取token into localStorage</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// token in localStorage</span></span><br><span class="line"><span class="keyword">let</span> Request = &#123;</span><br><span class="line">    <span class="keyword">set</span> token(content) &#123;</span><br><span class="line">        localStorage.setItem(<span class="string">"token"</span>, content);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span> token() &#123;</span><br><span class="line">        <span class="keyword">var</span> token = localStorage.getItem(<span class="string">"token"</span>);</span><br><span class="line">        <span class="keyword">if</span> (!token) &#123;</span><br><span class="line">            alert(<span class="string">"please, log in "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Request.token = <span class="string">'wwqeawdafaf'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Request.token) <span class="comment">//'wwqeawdafaf'</span></span><br></pre></td></tr></table></figure>
+
+<p>利用Symbol来是封装属性不能被外界访问，利用访问器控制可访问的数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> DATA = <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Infor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">        <span class="keyword">this</span>[DATA] = &#123; name, age &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> name() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>[DATA].name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> name(value) &#123;</span><br><span class="line">        <span class="keyword">this</span>.this[DATA] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> ls = <span class="keyword">new</span> Infor(<span class="string">"wang"</span>, <span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(ls) <span class="comment">//只能修改和访问name</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代理拦截"><a href="#代理拦截" class="headerlink" title="代理拦截"></a>代理拦截</h2><p>代理（拦截器）是对象的访问控制，<code>setter/getter</code> 是对单个对象属性的控制，而代理是对整个对象的控制。</p>
+<ul>
+<li>读写属性时代码更简洁</li>
+<li>对象的多个属性控制统一交给代理完成</li>
+<li>严格模式下 <code>set</code> 必须返回布尔值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gf = &#123; <span class="attr">name</span>: <span class="string">"zuomeng"</span>,<span class="attr">age</span>:<span class="number">22</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(gf, &#123;</span><br><span class="line">    <span class="keyword">get</span>(obj, property) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj[property];</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>(obj, property, value) &#123;</span><br><span class="line">        obj[property] = value;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">/proxy.name = <span class="string">"wang"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(proxy.name)</span><br></pre></td></tr></table></figure>
+
+<p>代理函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num == <span class="number">1</span> ? <span class="number">1</span> : num * factorial(num - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func_proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(factorial, &#123;</span><br><span class="line">    apply(func, obj, args) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(func) <span class="comment">// factorial(num)&#123;...&#125;</span></span><br><span class="line">        <span class="built_in">console</span>.log(obj); <span class="comment">//&#123;test:"test result"&#125;</span></span><br><span class="line">        <span class="built_in">console</span>.log(args); <span class="comment">// [3]</span></span><br><span class="line">        <span class="built_in">console</span>.time(<span class="string">"Time"</span>);</span><br><span class="line">        <span class="keyword">var</span> result = func.apply(obj,args)</span><br><span class="line">        <span class="built_in">console</span>.log(result); <span class="comment">// 6</span></span><br><span class="line">        <span class="built_in">console</span>.timeEnd(<span class="string">"Time"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">func_proxy.apply(&#123;<span class="attr">test</span>:<span class="string">"test result"</span>&#125;, [<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p>利用代理截取字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stringDot = &#123;</span><br><span class="line">  <span class="keyword">get</span>(target, key) &#123;</span><br><span class="line">    <span class="keyword">const</span> title = target[key].title;</span><br><span class="line">    <span class="keyword">const</span> len = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">return</span> title.length &gt; len</span><br><span class="line">      ? title.substr(<span class="number">0</span>, len) + <span class="string">"."</span>.repeat(<span class="number">3</span>)</span><br><span class="line">      : title;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> news = [</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="string">"这是一个伤不起的标题"</span>,</span><br><span class="line">    category: <span class="string">"政治"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="string">"没有这个的标题"</span>,</span><br><span class="line">    category: <span class="string">"社会"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="string">"我想成为一个独一无二的好标题"</span>,</span><br><span class="line">    category: <span class="string">"经济"</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> stringDotProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(news, stringDot);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">in</span> lessons) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(stringDotProxy[index]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h2><h3 id="利用代理绑定"><a href="#利用代理绑定" class="headerlink" title="利用代理绑定"></a>利用代理绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Two-way-binding</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">View</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">        <span class="keyword">get</span>(obj, property) &#123;&#125;,</span><br><span class="line">        <span class="keyword">set</span>(obj, property, value) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(obj);</span><br><span class="line">            <span class="built_in">console</span>.log(property);</span><br><span class="line">            <span class="built_in">console</span>.log(value);</span><br><span class="line">            <span class="built_in">document</span>.querySelectorAll(<span class="string">`[v-model ="<span class="subst">$&#123;property&#125;</span>"]`</span>).forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                item.value = value;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="built_in">document</span>.querySelectorAll(<span class="string">`[v-bind ="<span class="subst">$&#123;property&#125;</span>"]`</span>).forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                item.innerHTML = value;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> els = <span class="built_in">document</span>.querySelectorAll(<span class="string">"[v-model]"</span>);</span><br><span class="line">        els.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            item.addEventListener(<span class="string">"keyup"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="comment">//使用代理压入属性与值</span></span><br><span class="line">                proxy[<span class="keyword">this</span>.getAttribute(<span class="string">"v-model"</span>)] = <span class="keyword">this</span>.value;</span><br><span class="line">            &#125;);</span><br><span class="line">            item = <span class="literal">null</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> View().init()</span><br></pre></td></tr></table></figure>
+
+<p>普通类函数绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MutualBinding</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(property)&#123;</span><br><span class="line">        <span class="keyword">this</span>.property = property;</span><br><span class="line">    &#125;;</span><br><span class="line">    init()&#123;</span><br><span class="line">        <span class="built_in">document</span>.querySelectorAll(<span class="string">`[v-model ="<span class="subst">$&#123;<span class="keyword">this</span>.property&#125;</span>"]`</span>).forEach(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">            item.addEventListener(<span class="string">'keyup'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                self.binder(<span class="keyword">this</span>.value)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    binder(value)&#123;</span><br><span class="line">        <span class="built_in">document</span>.querySelectorAll(<span class="string">`[v-model ="<span class="subst">$&#123;<span class="keyword">this</span>.property&#125;</span>"]`</span>).forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                item.value = value;</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="built_in">document</span>.querySelectorAll(<span class="string">`[v-bind ="<span class="subst">$&#123;<span class="keyword">this</span>.property&#125;</span>"]`</span>).forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                item.innerHTML = value;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> eles = <span class="built_in">document</span>.querySelectorAll(<span class="string">"[v-model]"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> MutualBinding(<span class="string">'content'</span>).init();</span><br><span class="line"><span class="keyword">new</span> MutualBinding(<span class="string">'title'</span>).init();</span><br></pre></td></tr></table></figure>
+
+<h3 id="代理表单验证"><a href="#代理表单验证" class="headerlink" title="代理表单验证"></a>代理表单验证</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">  body &#123;</span><br><span class="line">    padding: 50px;</span><br><span class="line"><span class="css">    <span class="selector-tag">background</span>: <span class="selector-id">#34495e</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  input &#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 10<span class="selector-tag">px</span> <span class="selector-id">#ddd</span>;</span></span><br><span class="line">    height: 30px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="css">  <span class="selector-class">.error</span> &#123;</span></span><br><span class="line">    border: solid 10px red;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">validate</span> <span class="attr">rule</span>=<span class="string">"max:12,min:3"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">validate</span> <span class="attr">rule</span>=<span class="string">"max:3,isNumber"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="meta">  "use strict"</span>;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">//验证处理类</span></span></span><br><span class="line"><span class="actionscript">  <span class="class"><span class="keyword">class</span> <span class="title">Validate</span> </span>&#123;</span></span><br><span class="line">    max(value, len) &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> value.length &lt;= len;</span></span><br><span class="line">    &#125;</span><br><span class="line">    min(value, len) &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> value.length &gt;= len;</span></span><br><span class="line">    &#125;</span><br><span class="line">    isNumber(value) &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="regexp">/^\d+$/</span>.test(value);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">  <span class="comment">//代理工厂</span></span></span><br><span class="line"><span class="actionscript">  <span class="function"><span class="keyword">function</span> <span class="title">makeProxy</span><span class="params">(target)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">get</span>(target, key) &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> target[key];</span></span><br><span class="line">      &#125;,</span><br><span class="line"><span class="javascript">      <span class="keyword">set</span>(target, key, el) &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> rule = el.getAttribute(<span class="string">"rule"</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> validate = <span class="keyword">new</span> Validate();</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> state = rule.split(<span class="string">","</span>).every(<span class="function"><span class="params">rule</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">          <span class="keyword">const</span> info = rule.split(<span class="string">":"</span>);</span></span><br><span class="line"><span class="actionscript">          <span class="keyword">return</span> validate[info[<span class="number">0</span>]](el.value, info[<span class="number">1</span>]);</span></span><br><span class="line">        &#125;);</span><br><span class="line"><span class="actionscript">        el.classList[state ? <span class="string">"remove"</span>:<span class="string">"add"</span>](<span class="string">"error"</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> nodes = makeProxy(<span class="built_in">document</span>.querySelectorAll(<span class="string">"[validate]"</span>));</span></span><br><span class="line"><span class="javascript">  nodes.forEach(<span class="function">(<span class="params">item, i</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">    item.addEventListener(<span class="string">"keyup"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">      nodes[i] = <span class="keyword">this</span>;</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ul>
+<li>对象是属性和方法的集合即封装</li>
+<li>将复杂功能隐藏在内部，只开放给外部少量方法，更改对象内部的复杂逻辑不会对外部调用造成影响即抽象</li>
+<li>继承是通过代码复用减少冗余代码</li>
+<li>根据不同形态的对象产生不同结果即多态</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://wangruoyu.digital/2020/cket8yx27001xalvg7sme3t73/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cket8yx280020alvga5954rs0/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous</strong>
+        <div class="article-nav-title">
+          
+            Prototype in JavaScript
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/cket8yx21001falvg33wjgmgr/" class="article-nav-link">
+        <strong class="article-nav-caption">Next</strong>
+        <div class="article-nav-title">Funtion in JavaScript</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

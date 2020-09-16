@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     Ruoyu Wang
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Ruoyu Wang" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Ruoyu Wang</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-useBreakPointHook" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx2b0025alvgbqhw7q0x/"
+    >useBreakPointHook</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx2b0025alvgbqhw7q0x/" class="article-date">
+  <time datetime="2020-09-07T14:52:04.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="useBreakpoint-Hook-—在React中获取媒体查询断点"><a href="#useBreakpoint-Hook-—在React中获取媒体查询断点" class="headerlink" title="useBreakpoint Hook —在React中获取媒体查询断点"></a>useBreakpoint Hook —在React中获取媒体查询断点</h1><h3 id="怎么测量窗口宽度？"><a href="#怎么测量窗口宽度？" class="headerlink" title="怎么测量窗口宽度？"></a>怎么测量窗口宽度？</h3><p>要获取断点，我们需要测量浏览器的宽度，然后在<code>window</code>对象上获取该宽度。<code>window</code>对象具有两个宽度：<code>outerWidth</code>和<code>innerWidth</code>，这里我们使用<code>innerWidth</code>。</p>
+<p><code>window.innerWidth</code>每当我们调整窗口大小时，我们都会进行测量。</p>
+<p><code>window.addEventListener（&#39;resize&#39;，dosomethingWithWidth）</code></p>
+<p>因此，每当我们调整窗口大小时，<code>resize</code>都会触发该事件并计算<code>innerWidth</code>，但是实现这样的事情存在一个小问题，每当我们重新调整窗口大小时，都会触发回调函数, 回影响运行性能。因此这里我们可以使用节流函数来减少触发频率。关于节流函数详情请看<a href="https://www.wangruoyu.digital/2020/ckd6kbou9000044sj4w3t5vt0/" target="_blank" rel="noopener">节流函数与防抖函数</a>.</p>
+<h3 id="计算Breakpoint"><a href="#计算Breakpoint" class="headerlink" title="计算Breakpoint"></a>计算Breakpoint</h3><p>基于常见设备类型的Breakpoint</p>
+<ul>
+<li>如果宽度小于320像素，则该设备会特别小，以表示<code>xs</code>。</li>
+<li>如果宽度等于或大于320像素且小于720像素，则该设备很小，由表示<code>sm</code>。</li>
+<li>如果宽度等于或大于720像素且小于1024像素，则该设备为中等，由表示<code>md</code>。</li>
+<li>如果宽度等于或大于1024px，则该设备很大，由表示<code>lg</code>。</li>
+</ul>
+<h3 id="useBreakpoint-Hook"><a href="#useBreakpoint-Hook" class="headerlink" title="useBreakpoint Hook"></a>useBreakpoint Hook</h3><p>现在连接React中的所有零碎部分，以获得完整的<code>useBreakpoint</code>自定义Hook。</p>
+<p>首先，我们将使用<code>useState</code>挂钩创建状态，该状态将存储我们当前的设备类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  getDeviceBp  =  <span class="function">(<span class="params">width</span>) =&gt;</span>  &#123;</span><br><span class="line">  <span class="keyword">if</span>(width &lt; <span class="number">320</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'xs'</span></span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">320</span>  &amp;&amp;  width  &lt;  <span class="number">720</span>  ) &#123;</span><br><span class="line">    <span class="keyword">return</span> “ sm”</span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">720</span>  &amp;&amp;  width  &lt;  <span class="number">1024</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'md'</span></span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">1024</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> “ lg”</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> [brkPnt，setBrkPnt] = useState(<span class="function"><span class="params">()</span>=&gt;</span> getDeviceConfig（<span class="built_in">window</span>.innerWidth））</span><br></pre></td></tr></table></figure>
+
+<p>其次，我们使用<code>useEffect</code>来监听变化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">window</span>.addEventListener（<span class="string">'resize'</span>，throttle(setBrkPnt(getDeviceBp(<span class="built_in">window</span>.innerWidth))))</span><br><span class="line">&#125;）</span><br></pre></td></tr></table></figure>
+
+<p>最后，为了防止每次调用hook时就注册监听事件，并且在组件卸载时候注销我们我们需要从<code>useEffect</code>回调函数中返回一个函数，该回调函数将在我们的组件被卸载时执行，并将所有逻辑放入其中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> calInnerWidth = throttle(setBrkPnt(getDeviceBp(<span class="built_in">window</span>.innerWidth)));</span><br><span class="line">	<span class="built_in">window</span>.addEventListener（<span class="string">'resize'</span>，calInnerWidth)</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">window</span>.removeEventListener(<span class="string">'resize'</span>，calInnerWidth)</span><br><span class="line">&#125;,[]）</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useState, useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> throttle <span class="keyword">from</span> <span class="string">'./throttle'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>  getDeviceBp  =  <span class="function">(<span class="params">width</span>) =&gt;</span>  &#123;</span><br><span class="line">  <span class="keyword">if</span>(width &lt; <span class="number">320</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'xs'</span></span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">320</span>  &amp;&amp;  width  &lt;  <span class="number">720</span>  ) &#123;</span><br><span class="line">    <span class="keyword">return</span> “ sm”</span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">720</span>  &amp;&amp;  width  &lt;  <span class="number">1024</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'md'</span></span><br><span class="line">  &#125;  <span class="keyword">else</span>  <span class="keyword">if</span> (width &gt; = <span class="number">1024</span> ) &#123;</span><br><span class="line">    <span class="keyword">return</span> “ lg”</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useBreakpoint = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [brkPnt，setBrkPnt] = useState(<span class="function"><span class="params">()</span>=&gt;</span> getDeviceConfig（<span class="built_in">window</span>.innerWidth））</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> calInnerWidth = throttle(setBrkPnt(getDeviceBp(<span class="built_in">window</span>.innerWidth)));</span><br><span class="line">    <span class="built_in">window</span>.addEventListener（<span class="string">'resize'</span>，calInnerWidth)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">window</span>.removeEventListener(<span class="string">'resize'</span>，calInnerWidth)</span><br><span class="line">  &#125;,[]）</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> brkPnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> useBreakpoint;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-js/" rel="tag">react.js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-DO-ngnix-ssl-node" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx190006alvg0nlx61dr/"
+    >Digital ocean 部署</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx190006alvg0nlx61dr/" class="article-date">
+  <time datetime="2020-09-03T20:52:04.000Z" itemprop="datePublished">2020-09-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Node-js-Deployment"><a href="#Node-js-Deployment" class="headerlink" title="Node.js Deployment"></a>Node.js Deployment</h1><blockquote>
+<p>Steps to deploy a Node.js app to DigitalOcean using PM2, NGINX as a reverse proxy and an SSL from LetsEncrypt</p>
+</blockquote>
+<h2 id="1-Sign-up-for-Digital-Ocean"><a href="#1-Sign-up-for-Digital-Ocean" class="headerlink" title="1. Sign up for Digital Ocean"></a>1. Sign up for Digital Ocean</h2><h2 id="2-Create-a-droplet-and-log-in-via-ssh"><a href="#2-Create-a-droplet-and-log-in-via-ssh" class="headerlink" title="2. Create a droplet and log in via ssh"></a>2. Create a droplet and log in via ssh</h2><p> I will be using the root user, but would suggest creating a new user</p>
+<h2 id="3-Update-packages-amp-amp-Install-Node-NPM"><a href="#3-Update-packages-amp-amp-Install-Node-NPM" class="headerlink" title="3. Update packages &amp;&amp; Install Node/NPM"></a>3. Update packages &amp;&amp; Install Node/NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -</span><br><span class="line"></span><br><span class="line">sudo apt install nodejs</span><br><span class="line"></span><br><span class="line">node --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Clone-your-project-from-Github"><a href="#4-Clone-your-project-from-Github" class="headerlink" title="4. Clone your project from Github"></a>4. Clone your project from Github</h2><p>There are a few ways to get your files on to the server, I would suggest using Git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> yourproject.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-Install-dependencies-and-test-app"><a href="#5-Install-dependencies-and-test-app" class="headerlink" title="5. Install dependencies and test app"></a>5. Install dependencies and test app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> yourproject</span><br><span class="line">npm install</span><br><span class="line">npm start (or whatever your start <span class="built_in">command</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="6-Setup-PM2-process-manager-to-keep-your-app-running"><a href="#6-Setup-PM2-process-manager-to-keep-your-app-running" class="headerlink" title="6. Setup PM2 process manager to keep your app running"></a>6. Setup PM2 process manager to keep your app running</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo npm i pm2 -g</span><br><span class="line">pm2 start app (or whatever your file name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Other pm2 commands</span></span><br><span class="line">pm2 show app</span><br><span class="line">pm2 status</span><br><span class="line">pm2 restart app</span><br><span class="line">pm2 stop app</span><br><span class="line">pm2 logs (Show <span class="built_in">log</span> stream)</span><br><span class="line">pm2 flush (Clear logs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># To make sure app starts when reboot</span></span><br><span class="line">pm2 startup ubuntu</span><br></pre></td></tr></table></figure>
+<h3 id="You-should-now-be-able-to-access-your-app-using-your-IP-and-port-Now-we-want-to-setup-a-firewall-blocking-that-port-and-setup-NGINX-as-a-reverse-proxy-so-we-can-access-it-directly-using-port-80-http"><a href="#You-should-now-be-able-to-access-your-app-using-your-IP-and-port-Now-we-want-to-setup-a-firewall-blocking-that-port-and-setup-NGINX-as-a-reverse-proxy-so-we-can-access-it-directly-using-port-80-http" class="headerlink" title="You should now be able to access your app using your IP and port. Now we want to setup a firewall blocking that port and setup NGINX as a reverse proxy so we can access it directly using port 80 (http)"></a>You should now be able to access your app using your IP and port. Now we want to setup a firewall blocking that port and setup NGINX as a reverse proxy so we can access it directly using port 80 (http)</h3><h2 id="7-Setup-ufw-firewall"><a href="#7-Setup-ufw-firewall" class="headerlink" title="7. Setup ufw firewall"></a>7. Setup ufw firewall</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span></span><br><span class="line">sudo ufw status</span><br><span class="line">sudo ufw allow ssh (Port 22)</span><br><span class="line">sudo ufw allow http (Port 80)</span><br><span class="line">sudo ufw allow https (Port 443)</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-Install-NGINX-and-configure"><a href="#8-Install-NGINX-and-configure" class="headerlink" title="8. Install NGINX and configure"></a>8. Install NGINX and configure</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br><span class="line"></span><br><span class="line">sudo nano /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<p>Add the following to the location part of the server block</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server_name yourdomain.com www.yourdomain.com;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    proxy_pass http://localhost:5000; <span class="comment">#whatever port your app runs on</span></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">    proxy_set_header Connection <span class="string">'upgrade'</span>;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_cache_bypass <span class="variable">$http_upgrade</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Check NGINX config</span></span><br><span class="line">sudo nginx -t</span><br><span class="line"></span><br><span class="line"><span class="comment"># Restart NGINX</span></span><br><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="You-should-now-be-able-to-visit-your-IP-with-no-port-port-80-and-see-your-app-Now-let’s-add-a-domain"><a href="#You-should-now-be-able-to-visit-your-IP-with-no-port-port-80-and-see-your-app-Now-let’s-add-a-domain" class="headerlink" title="You should now be able to visit your IP with no port (port 80) and see your app. Now let’s add a domain"></a>You should now be able to visit your IP with no port (port 80) and see your app. Now let’s add a domain</h3><h2 id="9-Add-domain-in-Digital-Ocean"><a href="#9-Add-domain-in-Digital-Ocean" class="headerlink" title="9. Add domain in Digital Ocean"></a>9. Add domain in Digital Ocean</h2><p>In Digital Ocean, go to networking and add a domain</p>
+<p>Add an A record for @ and for www to your droplet</p>
+<h2 id="Register-and-or-setup-domain-from-registrar"><a href="#Register-and-or-setup-domain-from-registrar" class="headerlink" title="Register and/or setup domain from registrar"></a>Register and/or setup domain from registrar</h2><p>Choose “Custom nameservers” and add these 3</p>
+<ul>
+<li>ns1.digitalocean.com</li>
+<li>ns2.digitalocean.com</li>
+<li>ns3.digitalocean.com</li>
+</ul>
+<p>It may take a bit to propogate</p>
+<ol start="10">
+<li>Add SSL with LetsEncrypt<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install python-certbot-nginx</span><br><span class="line">sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># Only valid for 90 days, test the renewal process with</span></span><br><span class="line">certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>Now visit <a href="https://yourdomain.com" target="_blank" rel="noopener">https://yourdomain.com</a> and you should see your Node app</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devOps/" rel="tag">devOps</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-localToDoModule" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx24001nalvg35l1d0dg/"
+    >简单本地todo封装</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx24001nalvg35l1d0dg/" class="article-date">
+  <time datetime="2020-08-29T10:52:04.000Z" itemprop="datePublished">2020-08-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="利用localStorage封装todo逻辑"><a href="#利用localStorage封装todo逻辑" class="headerlink" title="利用localStorage封装todo逻辑"></a>利用localStorage封装todo逻辑</h2><p><strong>需要注意的是</strong>： </p>
+<p>监听每个item是否被checked逻辑中，如果直接将监听事件绑定到每个item上，会导致新的item在被渲染后未能被成功添加此事件。 </p>
+<p>当然也可以使用传统方法获取动态DOM节点如<code>getEelementById</code>,但是要通过[``mutationObserver`](<a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)不断的获取更新的DOM才能保证新的item也被添加上监听事件。" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)不断的获取更新的DOM才能保证新的item也被添加上监听事件。</a> </p>
+<p>另一个方法是，可以将点击事件绑定到父元素上，通过<code>e.targe.matches</code>方法得到此item，然后通过获取存储在该item dataset中的索引来改变items对象中的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalToDo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(submitForm, itemsWrapper, selectAll, clearAll) &#123;</span><br><span class="line">    <span class="keyword">this</span>.submitForm = submitForm;</span><br><span class="line">    <span class="keyword">this</span>.itemsWrapper = itemsWrapper;</span><br><span class="line">    <span class="keyword">this</span>.selectAll = selectAll;</span><br><span class="line">    <span class="keyword">this</span>.clearAll = clearAll;</span><br><span class="line">    <span class="keyword">this</span>.items = <span class="built_in">JSON</span>.parse(localStorage.getItem(<span class="string">'item'</span>)) || [];</span><br><span class="line">  &#125;</span><br><span class="line">  init() &#123;</span><br><span class="line">    <span class="keyword">this</span>.render(<span class="keyword">this</span>.itemsWrapper, <span class="keyword">this</span>.items);</span><br><span class="line">    <span class="keyword">this</span>.submitForm.addEventListener(<span class="string">'submit'</span>, <span class="keyword">this</span>.addItem.bind(<span class="keyword">this</span>));</span><br><span class="line">    <span class="keyword">this</span>.itemsWrapper.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.toggleCheckbox.bind(<span class="keyword">this</span>));</span><br><span class="line">    <span class="keyword">this</span>.selectAll.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.toggleSelectAll.bind(<span class="keyword">this</span>));</span><br><span class="line">    <span class="keyword">this</span>.clearAll.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.handleClear.bind(<span class="keyword">this</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  addItem(e) &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="keyword">const</span> text = <span class="keyword">this</span>.submitForm.querySelector(<span class="string">'[name=item]'</span>).value;</span><br><span class="line">    <span class="keyword">this</span>.items.push(&#123; text, <span class="attr">checked</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">    <span class="keyword">this</span>.render(<span class="keyword">this</span>.itemsWrapper, <span class="keyword">this</span>.items);</span><br><span class="line">    localStorage.setItem(<span class="string">'item'</span>, <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.items));</span><br><span class="line">    <span class="keyword">this</span>.submitForm.reset();</span><br><span class="line">  &#125;</span><br><span class="line">  render(itemsWrapper, items = []) &#123;</span><br><span class="line">    <span class="keyword">this</span>.itemsWrapper.innerHTML = <span class="keyword">this</span>.items</span><br><span class="line">      .map(</span><br><span class="line">      (item, i) =&gt; <span class="string">`</span></span><br><span class="line"><span class="string">&lt;li&gt;</span></span><br><span class="line"><span class="string">&lt;input type=checkbox data-index=<span class="subst">$&#123;i&#125;</span> id=item<span class="subst">$&#123;i&#125;</span> <span class="subst">$&#123;item.checked ? <span class="string">'checked'</span> : <span class="string">''</span>&#125;</span> &gt;</span></span><br><span class="line"><span class="string">&lt;label for=item<span class="subst">$&#123;i&#125;</span>&gt;<span class="subst">$&#123;item.text&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">&lt;/li&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">    )</span><br><span class="line">      .join(<span class="string">''</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  toggleCheckbox(e) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!e.target.matches(<span class="string">'input'</span>)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">const</span> index = e.target.dataset.index;</span><br><span class="line">    <span class="keyword">this</span>.items[index].checked = !<span class="keyword">this</span>.items[index].checked;</span><br><span class="line">    localStorage.setItem(<span class="string">'item'</span>, <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.items));</span><br><span class="line">  &#125;</span><br><span class="line">  toggleSelectAll() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.selectAll.checked) &#123;</span><br><span class="line">      <span class="keyword">this</span>.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> (item.checked = <span class="literal">true</span>));</span><br><span class="line">      localStorage.setItem(<span class="string">'item'</span>, <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.items));</span><br><span class="line">      <span class="keyword">this</span>.render(<span class="keyword">this</span>.itemsWrapper, <span class="keyword">this</span>.items);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> (item.checked = <span class="literal">false</span>));</span><br><span class="line">      localStorage.setItem(<span class="string">'item'</span>, <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.items));</span><br><span class="line">      <span class="keyword">this</span>.render(<span class="keyword">this</span>.itemsWrapper, <span class="keyword">this</span>.items);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  handleClear() &#123;</span><br><span class="line">    localStorage.removeItem(<span class="string">'item'</span>);</span><br><span class="line">    <span class="keyword">this</span>.items = [];</span><br><span class="line">    <span class="keyword">this</span>.render(itemsList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> addItems = <span class="built_in">document</span>.querySelector(<span class="string">'.add-items'</span>);</span><br><span class="line"><span class="keyword">const</span> itemsList = <span class="built_in">document</span>.querySelector(<span class="string">'.plates'</span>);</span><br><span class="line"><span class="keyword">const</span> selectAll = <span class="built_in">document</span>.querySelector(<span class="string">'#select-all'</span>);</span><br><span class="line"><span class="keyword">const</span> clearAll = <span class="built_in">document</span>.querySelector(<span class="string">'#clear-all'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> LocalToDo(addItems, itemsList, selectAll, clearAll).init();</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/" rel="tag">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-nextForSSR" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx25001qalvg0f5hcdui/"
+    >Next.js For SSR</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx25001qalvg0f5hcdui/" class="article-date">
+  <time datetime="2020-08-16T16:09:04.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="next-js-与-SSR"><a href="#next-js-与-SSR" class="headerlink" title="next.js 与 SSR"></a>next.js 与 SSR</h2><p>术语:</p>
+<ul>
+<li><p>服务器端渲染（SSR）：响应每个请求，在服务器上渲染应用程序，然后将水合的HTML和Javascript发送回客户端。</p>
+</li>
+<li><p>静态渲染（SR）：在构建时（例如，当您运行npm run build命令时）渲染应用。通常涉及为每个URL生成一个静态HTML页面。这是NextJS的默认方法。</p>
+</li>
+<li><p>客户端渲染（CSR）：在运行时在浏览器中的客户端上渲染应用程序。</p>
+</li>
+</ul>
+<p>利弊:<br>  即使Next的建议是使用静态渲染，每种方法都有其优点和缺点。</p>
+<ul>
+<li><p>服务器端渲染（SSR）：<br>优点:</p>
+<ul>
+<li>可以动态处理动态路线</li>
+<li>渲染页面将始终是最新的</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>如果要进行繁重的处理可能会很慢，因为客户端在发出请求后必须等待每个页面</li>
+<li>CDN无法缓存</li>
+</ul>
+</li>
+<li><p>静态渲染（SR）：<br>优点:</p>
+<ul>
+<li>始终非常快速和高效</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>如果您不知道所有URL早于（构建）时间，则无法处理动态路由</li>
+</ul>
+</li>
+<li><p>客户端渲染（CSR）：<br>缺点:</p>
+<ul>
+<li>随着应用程序的增长迅速降低速度，通常应避免使用</li>
+</ul>
+</li>
+</ul>
+<p>NextJS中的SSR，SR和CSR:</p>
+<blockquote>
+<p>getStaticProps —在构建时获取数据<br>getStaticPaths —在构建时预渲染动态路由<br>getServerSideProps —在每个请求上获取数据<br>swr-在运行时从客户端获取数据</p>
+<p>基本上，Next.JS将在构建时呈现尽可能多的HTML数据（getStaticProps），然后如果以后需要数据，它将运行getServerSideProps。如果需要在客户端上获取数据，使用swr。</p>
+</blockquote>
+<h3 id="getStaticProps"><a href="#getStaticProps" class="headerlink" title="getStaticProps"></a>getStaticProps</h3><p>Next.JS在构建时预先渲染每个页面，并使用 <code>getStaticProps</code> 返回的道具将数据与页面混合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">&#123; data &#125;</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;data&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><span class="keyword">export</span> <span class="keyword">const</span> getStaticProps = <span class="keyword">async</span> () =&gt; </span><br><span class="line">  (&#123; <span class="attr">props</span>: &#123; <span class="attr">data</span>: <span class="string">"Some Data"</span> &#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="TypeScript-Implementation"><a href="#TypeScript-Implementation" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetStaticProps &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getStaticProps: GetStaticProps = <span class="keyword">async</span> () =&gt; </span><br><span class="line">  (&#123; <span class="attr">props</span>: &#123; <span class="attr">data</span>: <span class="string">"Some Data"</span> &#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>关于<code>getStaticProps</code>的一些重要注意事项：</p>
+<p>1.由于它在构建时执行，因此它不会从运行时发出的任何请求接收数据。 其中包括查询参数，HTTP标头等<br>2.它“仅”运行在“服务器”上，这意味着您可以在此处编写服务器代码，而不会下载到该代码或在“客户端”上运行，例如 API调用，数据库调用，请求等<br>3.由于它仅在<strong>服务器</strong>上运行，因此您无需进行本地API调用（例如<code>/ pages / api</code>）。 只需直接在<code>getStaticProps</code>内部编写服务器代码即可。</p>
+<h3 id="getStaticPaths"><a href="#getStaticPaths" class="headerlink" title="getStaticPaths"></a>getStaticPaths</h3><p>因此，<code>getStaticPaths</code>允许您列出以后希望****需要的动态路由列表，然后在构建时将其渲染（例如，当您运行<code>npm run时） 在您的终端窗口中构建</code>）。 您可以通过返回带有`paths’键（必需）的对象来定义它们。</p>
+<p>这就引出了一个问题：“如果** User **请求您未在<code>getStaticPaths</code>中定义的页面会发生什么？”。 返回的对象还具有一个称为“ fallback”的键（必需），该键指示此行为。</p>
+<p>如果将“ fallback”关键字设置为“ false”，则所有未定义的路由“ 404”都会退出。</p>
+<p>如果将fallback键设置为true，则当<strong>User</strong>请求未定义页面时，NextJS会抛出在同一文件中定义的fallback HTML，则在后台进行下一步，并使用用户输入的URL完全生成了所请求的页面，然后将其交换为后备HTML。详情参考 <a href="https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation" target="_blank" rel="noopener">docs</a> 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRouter &#125; <span class="keyword">from</span> <span class="string">'next/router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Post = <span class="function">(<span class="params">&#123; post &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> router = useRouter()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (router.isFallback) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;&#123;...post&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export async function getStaticPaths() &#123;</span></span><br><span class="line"><span class="regexp">  return &#123;</span></span><br><span class="line"><span class="regexp">    paths: [&#123; params: &#123; id: '1' &#125; &#125;, &#123; params: &#123; id: '2' &#125; &#125;],</span></span><br><span class="line"><span class="regexp">    fallback: true,</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export async function getStaticProps(&#123; params &#125;) &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ if url was /</span>posts/<span class="number">3</span>, params.id will be <span class="number">3</span></span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">`https://.../<span class="subst">$&#123;params.id&#125;</span>`</span>)</span><br><span class="line">  <span class="keyword">const</span> post = <span class="keyword">await</span> res.json()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">props</span>: &#123; post &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Post</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TypeScript-Implementation-1"><a href="#TypeScript-Implementation-1" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetStaticPaths &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getStaticPaths: GetStaticPaths = <span class="keyword">async</span> () =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="getServerSideProps"><a href="#getServerSideProps" class="headerlink" title="getServerSideProps"></a>getServerSideProps</h3><p>NextJS将在每次请求时使用<code>getServerSideProps</code>函数呈现页面**，并将使用该函数返回的数据填充组件props。</p>
+<p>根据文档，如果您在构建时无法访问页面所需的数据，则仅应使用<code>getServerSideProps</code>。 即请求中包含一些您需要的信息，以提取所需的数据或呈现页面。</p>
+<p>注意，<code>getServerSideProps</code>仅在** Server <strong>上运行，并且永远不会下载到</strong> Client <strong>或在</strong> Client **中运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Page = <span class="function">(<span class="params">&#123; data &#125;</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;<span class="keyword">export</span> <span class="keyword">const</span> getServerSideProps = <span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">`https://.../data`</span>);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();  <span class="keyword">return</span> &#123; <span class="attr">props</span>: &#123; data &#125; &#125;;</span><br><span class="line">&#125;<span class="keyword">export</span> <span class="keyword">default</span> Page;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TypeScript-Implementation-2"><a href="#TypeScript-Implementation-2" class="headerlink" title="TypeScript Implementation"></a>TypeScript Implementation</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; GetServerSideProps &#125; <span class="keyword">from</span> <span class="string">'next'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getServerSideProps: GetServerSideProps = <span class="keyword">async</span> () =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="The-SWR-Hook"><a href="#The-SWR-Hook" class="headerlink" title="The SWR Hook"></a>The SWR Hook</h3><p>Next.JS通常对客户端渲染不满意，但这并不意味着您无法在运行时从客户端获取数据。</p>
+<p>Next的聪明人创建了一个名为[SWR]（<a href="https://swr.vercel.app/）的钩子，该钩子表示**Stale" target="_blank" rel="noopener">https://swr.vercel.app/）的钩子，该钩子表示**Stale</a> While Revalidate** —反过来又是HTTP缓存失效策略的名称。</p>
+<p>我们将在另一篇文章中深入探讨SWR，但与此同时，这里有一个简短的代码片段来演示其用法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> useSWR <span class="keyword">from</span> <span class="string">'swr'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Article = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; data, error &#125; = useSWR(<span class="string">'/api/prices'</span>, fetch)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>There was an error!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Still loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Prices: &#123;data&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>主要的收获是：尽可能使用<strong>静态渲染</strong>。 如果您需要信息来渲染仅在用户发出请求时才可用的页面，请使用“服务器端渲染”。 如果您需要实时更新客户端，强烈建议使用SWR。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/next-js/" rel="tag">next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-js/" rel="tag">react.js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-formUpload" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1z001aalvgcemw5ilm/"
+    >Form upload</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1z001aalvgcemw5ilm/" class="article-date">
+  <time datetime="2020-08-02T11:52:04.000Z" itemprop="datePublished">2020-08-02</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="基础概要"><a href="#基础概要" class="headerlink" title="基础概要"></a>基础概要</h2><h3 id="同步上传多文件简单实现"><a href="#同步上传多文件简单实现" class="headerlink" title="同步上传多文件简单实现"></a>同步上传多文件简单实现</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">'server/upload'</span> <span class="attr">method</span>=<span class="string">'post'</span> <span class="attr">enctype</span>=<span class="string">'multipart/form-data'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file[]'</span> <span class="attr">mutiple</span>  /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">value</span>=<span class="string">'upload'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="JS-提供的FormData构造函数及其方法"><a href="#JS-提供的FormData构造函数及其方法" class="headerlink" title="JS 提供的FormData构造函数及其方法"></a>JS 提供的FormData构造函数及其方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newForm = <span class="keyword">new</span> FormData();</span><br><span class="line">newForm.append(<span class="string">'Keyname'</span>,<span class="string">'value'</span>);</span><br><span class="line"></span><br><span class="line">newForm.get(<span class="string">'Keyname'</span>)  <span class="comment">// 'value'</span></span><br><span class="line">newForm.has(<span class="string">'Keyname'</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">newForm.delete(<span class="string">'Keyname'</span>)</span><br><span class="line">newForm.get(<span class="string">'Keyname'</span>) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="异步上传"><a href="#异步上传" class="headerlink" title="异步上传"></a>异步上传</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file[]'</span> <span class="attr">mutiple</span> <span class="attr">id</span>=<span class="string">'file'</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">value</span>=<span class="string">'upload'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'progress-bar-wrapper'</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">'progress-bar'</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"error-info"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> fileNode = <span class="built_in">document</span>.querySelector(<span class="string">'#file'</span>);</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> submitNode = <span class="built_in">document</span>.querySelector(<span class="string">'input[type="submit"]'</span>);</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> progressBarWrapper = <span class="built_in">document</span>.querySelector(<span class="string">'.progress-bar-wrapper'</span>),</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">fileNode.addEventListener(<span class="string">'onchange'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">// files属性可得到一组上传文件的信息，包括文件名称，文件大小（字节），文件类型等等</span></span></span><br><span class="line"><span class="actionscript">  <span class="keyword">const</span> files = <span class="keyword">this</span>.files;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">var</span> fileName = <span class="string">''</span>,</span></span><br><span class="line">  		fileSize = 0,</span><br><span class="line">      maxSize = 1048576,</span><br><span class="line"><span class="actionscript">      errorInfo = <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">      formData = <span class="literal">null</span>;</span></span><br><span class="line">  </span><br><span class="line"><span class="javascript">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;=files.length; i++)&#123;</span></span><br><span class="line">    fileName = files[i].name;</span><br><span class="line">    fileSize[i].size;</span><br><span class="line"><span class="javascript">    <span class="keyword">if</span>(!<span class="regexp">/\.(gif|jpg|jpeg|png)$/</span>.test(fileName))&#123;</span></span><br><span class="line"><span class="actionscript">      errorInfo = <span class="string">'类型错误'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    if(fileSize&gt;maxSize)&#123;</span><br><span class="line"><span class="actionscript">      errorInfo = <span class="string">'文件太大'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> progressBar = docuemtn.createElement(<span class="string">'li'</span>);</span></span><br><span class="line"><span class="actionscript">    progressBar.className = <span class="string">'progress-bar'</span>;</span></span><br><span class="line">    progressBarWrapper.appendChild(progressBar);</span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    <span class="keyword">if</span>(errorInfo !== <span class="string">''</span>)&#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">      progressBarWrapper.innerHTML = `<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"error-info"</span>&gt;</span>$&#123;errorInfo&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>`</span></span></span><br><span class="line"><span class="actionscript">    &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">      progressBar.innerHTML = '<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>'</span></span></span><br><span class="line">     	</span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="actionscript">      formData.append(<span class="string">'KeyName'</span>,files[i]);</span></span><br><span class="line"><span class="actionscript">      <span class="comment">// Ajax</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> ajax = <span class="built_in">window</span>.XMLHttpRequest? <span class="keyword">new</span> <span class="built_in">window</span>.XMLHttpRequest() : <span class="keyword">new</span> ActionXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span></span><br><span class="line"><span class="actionscript">      ajax.open(<span class="string">'post'</span>,<span class="string">'server/upload'</span>);</span></span><br><span class="line"><span class="actionscript">      <span class="comment">// 利用闭包保存i</span></span></span><br><span class="line"><span class="actionscript">      (<span class="function"><span class="keyword">function</span><span class="params">(i)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">          ajax.upload.onprogress = <span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> e = e | <span class="built_in">window</span>.event,</span></span><br><span class="line"><span class="actionscript">              percent = e.loaded / e.total*<span class="number">100</span>+<span class="string">'%'</span>,</span></span><br><span class="line"><span class="actionscript">              thisProgressBar = getElementsByClassName(<span class="string">'progress-bar'</span>)[i];</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">          thisProgressBar.getElementsByClassName(<span class="string">'progress'</span>)[<span class="number">0</span>].style.width = perceant;</span></span><br><span class="line">      	&#125; </span><br><span class="line">      &#125;)(i)</span><br><span class="line">      ajax.send(formData);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-lazyLoadAndDebounce" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx23001kalvg8jd1d1ry/"
+    >lazyLoadAndDebounce</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx23001kalvg8jd1d1ry/" class="article-date">
+  <time datetime="2020-07-28T12:52:04.000Z" itemprop="datePublished">2020-07-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="如何实现图片懒加载？"><a href="#如何实现图片懒加载？" class="headerlink" title="如何实现图片懒加载？"></a>如何实现图片懒加载？</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><ol>
+<li>存储图片地址，可利用DOM中自带的dataset属性</li>
+<li>等用户可视窗口进入图片区域后，通过存储在dataset中的图片地址替换img的src属性</li>
+<li>移除dataset中存储的地址</li>
+</ol>
+<h4 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, lazyLoad);</span><br><span class="line"><span class="keyword">const</span> images = <span class="built_in">document</span>.querySelectorAll(<span class="string">'img'</span>);</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> lazyLoad = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = n; i &lt; images.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> img = images[i];</span><br><span class="line">    <span class="comment">// 当图片一半以上暴露在可视窗口，执行下列</span></span><br><span class="line">    <span class="keyword">const</span> showAt = <span class="built_in">window</span>.pageYOffset + <span class="built_in">window</span>.innerHeight - img.height / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> isAtHalf = showAt &gt; img.offsetTop;</span><br><span class="line">    <span class="keyword">if</span> (isAtHalf) &#123;</span><br><span class="line">      <span class="keyword">let</span> src = img.dataset.src;</span><br><span class="line">      img.setAttribute(<span class="string">'src'</span>, src);</span><br><span class="line">      img.removeAttribute(<span class="string">'data-src'</span>);</span><br><span class="line">      n++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong> 需要注意的是， 这里利用了变量<code>n</code>来判断图片是否加载完成，避免在滚动时重复执行造成<code>undefined</code>错误。 因为当任意图片再次执行此<code>for</code>循环时，第一次循环已经清除了<code>data-src</code>属性，因此会报<code>undefinded</code>错误。</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>上述方法中，当用户滚动时，事件监听函数会频繁触发，因此可能会造成不必要的性能损耗，因此就需要防抖函数来限制其触发频率。</p>
+      
+      <a class="article-more-link" href="/2020/cket8yx23001kalvg8jd1d1ry/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lazyLoading/" rel="tag">lazyLoading</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-javaScript-DOM" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx20001dalvggar1779j/"
+    >DOM &amp; Event in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx20001dalvggar1779j/" class="article-date">
+  <time datetime="2020-07-01T13:59:04.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><h3 id="getElement…-与querySelector的区别"><a href="#getElement…-与querySelector的区别" class="headerlink" title="getElement… 与querySelector的区别"></a>getElement… 与querySelector的区别</h3><ul>
+<li>使用getElement…返回的都是动态的集合</li>
+<li>使用querySelectorAll返回的是静态集合</li>
+</ul>
+<h3 id="获取属性特征"><a href="#获取属性特征" class="headerlink" title="获取属性特征"></a>获取属性特征</h3><ul>
+<li>使用特征操作时属性名称不区分大小写</li>
+<li>特征值都为字符串类型，如需数值类型需要进行转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Des</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getAttribute</td>
+<td>获取属性</td>
+</tr>
+<tr>
+<td>setAttribute</td>
+<td>设置属性</td>
+</tr>
+<tr>
+<td>removeAttribute</td>
+<td>删除属性</td>
+</tr>
+<tr>
+<td>hasAttribute</td>
+<td>属性检测</td>
+</tr>
+</tbody></table>
+<p>Note: 大部分情况下可以通过属性该更改并可同步到特征集中。但是像input中的value属性需要通过特征方法如<code>setAttribute</code>更改可同步到特征集中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">value</span>=<span class="string">"secret"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> login = <span class="built_in">document</span>.querySelector(<span class="string">`[name='login']`</span>)</span></span><br><span class="line"><span class="actionscript">login.value =  <span class="string">'12345'</span>;</span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(login.getAttribute(<span class="string">'value'</span>)) <span class="comment">// 'secret'</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//---------------------------------------------------</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">login.setAttribute(<span class="string">'value'</span>, <span class="string">'12345'</span>)  </span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(login.value) <span class="comment">// '12345'</span></span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/cket8yx20001dalvggar1779j/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/" rel="tag">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-promise-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx26001ualvg7hmzblfw/"
+    >Promise in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx26001ualvg7hmzblfw/" class="article-date">
+  <time datetime="2020-06-30T10:59:04.000Z" itemprop="datePublished">2020-06-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="What-is-a-Promise"><a href="#What-is-a-Promise" class="headerlink" title="What is a Promise?"></a>What is a Promise?</h2><blockquote>
+<p><strong>MDN</strong></p>
+<p>A <code>Promise</code> is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action’s eventual success value or failure reason.</p>
+</blockquote>
+<p>A <code>Promise</code> is in one of these states:</p>
+<ul>
+<li><p><em>pending</em>: initial state, neither fulfilled nor rejected.</p>
+</li>
+<li><p><em>fulfilled</em>: meaning that the operation completed successfully.</p>
+</li>
+<li><p><em>rejected</em>: meaning that the operation failed</p>
+</li>
+</ul>
+<h2 id="Promise-chain"><a href="#Promise-chain" class="headerlink" title="Promise chain"></a>Promise chain</h2><p>A pending promise can either be fulfilled with a value, or rejected with a reason (error). When either of these options happens, the associated handlers queued up by a promise’s then method are called</p>
+<p>  <img src="/2020/cket8yx26001ualvg7hmzblfw/promise-chain.png" alt="promise-chain"></p>
+<blockquote>
+<p>The methods <code>promise.then(),</code> <code>promise.catch(), and promise.finally()</code> are used to associate further action with a promise that becomes settled.</p>
+</blockquote>
+<p>  链式加载</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    script.src = file;</span><br><span class="line">    script.onload = <span class="function"><span class="params">()</span> =&gt;</span> resolve(script);</span><br><span class="line">    script.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject();</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">load(<span class="string">"js/1.js"</span>)</span><br><span class="line">.then(<span class="function"><span class="params">()</span> =&gt;</span> load(<span class="string">"js/2.js"</span>))</span><br><span class="line">.then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">code</span> <span class="attr">here</span>&gt;</span>);</span></span><br></pre></td></tr></table></figure>
+
+<p>使用promise封装定时器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装定时器</span></span><br><span class="line"><span class="comment">//定时器为宏任务队列</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeOut</span>(<span class="params">delay=<span class="number">3000</span>,callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>callback(resolve),delay)</span><br><span class="line">        <span class="comment">//delay to trigger Promise return resolve to callback</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//--------------------------------------------</span></span><br><span class="line"><span class="keyword">var</span> timeInterval = <span class="function">(<span class="params">callback, delay = <span class="number">60</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> callback(id), delay)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">timeInterval(<span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">"div"</span>);</span><br><span class="line">  <span class="keyword">let</span> left = <span class="built_in">parseInt</span>(<span class="built_in">window</span>.getComputedStyle(div).left)</span><br><span class="line">  div.style.left = left + <span class="number">10</span> + <span class="string">'px'</span>;</span><br><span class="line">  <span class="keyword">if</span> (left &gt; <span class="number">250</span>) &#123;</span><br><span class="line">    clearInterval(id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/cket8yx26001ualvg7hmzblfw/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-class-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx1j000ialvg2rtlfajt/"
+    >Class in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx1j000ialvg2rtlfajt/" class="article-date">
+  <time datetime="2020-06-29T10:59:04.000Z" itemprop="datePublished">2020-06-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="类的本质"><a href="#类的本质" class="headerlink" title="类的本质"></a>类的本质</h3><p>类的本质是函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> User); <span class="comment">//function</span></span><br></pre></td></tr></table></figure>
+
+<p>在类中添加原型方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;;</span><br><span class="line">	getName()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>相当于:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;;</span><br><span class="line">User.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类与构造函数差异"><a href="#类与构造函数差异" class="headerlink" title="类与构造函数差异"></a>类与构造函数差异</h3><ul>
+<li>类定义的方法不能遍历</li>
+</ul>
+<h3 id="静态属性和方法只能通过类原型来调用"><a href="#静态属性和方法只能通过类原型来调用" class="headerlink" title="静态属性和方法只能通过类原型来调用"></a>静态属性和方法只能通过类原型来调用</h3><p>  使用静态方法批量生产对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [&#123;</span><br><span class="line">        <span class="string">"1990"</span>: <span class="number">794362.7682</span>,</span><br><span class="line">        <span class="string">"code"</span>: <span class="string">"GB"</span>,</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"United Kingdom"</span>,</span><br><span class="line">        <span class="string">"change"</span>: <span class="number">-10</span>,</span><br><span class="line">        <span class="string">"region"</span>: <span class="string">"EU"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"1990"</span>: <span class="number">71303.67987</span>,</span><br><span class="line">        <span class="string">"code"</span>: <span class="string">"SE"</span>,</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Sweden"</span>,</span><br><span class="line">        <span class="string">"change"</span>: <span class="number">-20</span>,</span><br><span class="line">        <span class="string">"region"</span>: <span class="string">"EU"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EU</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(data) &#123;</span><br><span class="line">        <span class="keyword">this</span>.model = data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> change() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.model.change;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> create(data) &#123;</span><br><span class="line">        <span class="comment">// data = JSON.parse(JSON.stringify(data));</span></span><br><span class="line">        <span class="keyword">return</span> data.map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="keyword">new</span> EU(item));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> maxChange(data) &#123;</span><br><span class="line">        <span class="keyword">return</span> data.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Math</span>.abs(b.change) - <span class="built_in">Math</span>.abs(a.change)</span><br><span class="line">        &#125;)[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> totalEmission(data) &#123;</span><br><span class="line">        <span class="keyword">return</span> data.reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> acc[<span class="string">'1990'</span>] + cur[<span class="string">'1990'</span>]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> EUs = EU.create(data);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>静态属性和方法也是可以被继承的。</p>
+</blockquote>
+<h3 id="访问器"><a href="#访问器" class="headerlink" title="访问器"></a>访问器</h3><p><code>getter</code> 和 <code>setter</code> 可以用来管理属性，防止属性被随意修改</p>
+<p>声明方法：方法前加<code>get</code> or <code>set</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">get</span> name()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> user1 = <span class="keyword">new</span> User(<span class="string">'ruoyu'</span>);</span><br><span class="line"><span class="comment">//使用访问器时不需要加括号</span></span><br><span class="line"><span class="built_in">console</span>.log(user1.name); <span class="comment">// 'ruoyu'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="属性保护"><a href="#属性保护" class="headerlink" title="属性保护"></a>属性保护</h3><ol>
+<li><p>可以通过<code>_&lt;name&gt;</code> 命名方式来告知此属性是私有属性，但此方式只是一种公认的提示，本身并不能防止属性的修改。</p>
+</li>
+<li><p>通过<code>symbol</code>来保护属性，比如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> AGE = <span class="built_in">Symbol</span>(<span class="string">"age"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    _name = <span class="string">'ruoyu'</span>;</span><br><span class="line">    <span class="keyword">constructor</span>(age) &#123;</span><br><span class="line">        <span class="keyword">this</span>[AGE] = age;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> user1 = <span class="keyword">new</span> User(<span class="number">19</span>);</span><br><span class="line"><span class="built_in">console</span>.log(user1) <span class="comment">// &#123;_name: "ruoyu", Symbol(age): 19&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过<code>WeakMap()</code>键值对集</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _age = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    _age.set(<span class="keyword">this</span>, &#123;<span class="attr">age</span>:<span class="number">18</span>,<span class="attr">password</span>:<span class="number">123</span>&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> user1 = <span class="keyword">new</span> User(<span class="string">'ruoyu'</span>);</span><br><span class="line"><span class="comment">//属性并不会暴露在外部，除非使用get访问器</span></span><br><span class="line"><span class="built_in">console</span>.log(md) <span class="comment">// &#123;name:'ruoyu'&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(_age) <span class="comment">//WeakMap &#123;User =&gt; &#123;age:18,pasword:123&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="Super"><a href="#Super" class="headerlink" title="Super"></a>Super</h3><p>super 一直指向当前对象, 在继承关系中，如果想要使用父类中的属性方法，可以使用<code>super</code>关键字来指向当前对象。</p>
+<p>下面通过普通方法来模拟<code>super</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">  name: <span class="string">"user"</span>,</span><br><span class="line">  show() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> spawn = &#123;</span><br><span class="line">  __proto__: user,</span><br><span class="line">  name: <span class="string">"spawn"</span>,</span><br><span class="line">  show() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.__proto__.show.call(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(spwan.show()); <span class="comment">// 'spawn'</span></span><br></pre></td></tr></table></figure>
+
+<p><code>super</code>关键词相当于一颗语法糖</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上述代码中spwan中的show方法可以简写成：</span></span><br><span class="line">show()&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">super</span>.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note</strong>: <code>super</code>关键词只能在类或对象的方法中使用</p>
+<p>在继承父类构造者中，可以使用<code>super()</code>方法来调用父类中的构造函数.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">    <span class="keyword">super</span>(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原理剖析:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  Parent.apply(<span class="keyword">this</span>, args);</span><br><span class="line">&#125;</span><br><span class="line">Son.prototype = <span class="built_in">Object</span>.create(Parent.prototype);</span><br><span class="line">Son.prototype.constructor = Son;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-prototype-js" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/cket8yx280020alvga5954rs0/"
+    >Prototype in JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cket8yx280020alvga5954rs0/" class="article-date">
+  <time datetime="2020-06-28T07:59:04.000Z" itemprop="datePublished">2020-06-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="JavaScript-所有对象都是对象的实例"><a href="#JavaScript-所有对象都是对象的实例" class="headerlink" title="JavaScript: 所有对象都是对象的实例"></a>JavaScript: 所有对象都是对象的实例</h2><p>MDN：</p>
+<blockquote>
+<p> JavaScript only has one construct: objects.</p>
+</blockquote>
+<p>什么是原型链？</p>
+<blockquote>
+<p>When trying to access a property of an object, <strong>the property will not  only be sought on the object but on the prototype of the object,</strong> the  prototype of the prototype, and so on until either a property with a  matching name is found or the end of the prototype chain is reached.</p>
+</blockquote>
+<h3 id="prototype-vs-proto"><a href="#prototype-vs-proto" class="headerlink" title="prototype vs __proto__"></a><code>prototype</code> vs <code>__proto__</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">( <span class="keyword">new</span> Foo ).__proto__ === Foo.prototype;</span><br><span class="line">( <span class="keyword">new</span> Foo ).prototype === <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Foo(<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Foo(<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Constructor  function Foo also has its own <code>__proto__</code> which is Function.prototype</p>
+<p><code>__proto__</code> is the actual object that is used in the lookup chain to resolve methods, etc.  <code>prototype</code> is the object that is used to build <code>__proto__</code> when you create an object with <code>new</code></p>
+<p><img src="/2020/cket8yx280020alvga5954rs0/inherit.png" alt="inherit"></p>
+<p><strong><code>__proto__</code> 不是对象属性，理解为<code>prototype</code> 的 <code>getter/setter</code> 实现，是一个非标准定义</strong> <code>__proto__</code> 内部使用<code>getter/setter</code> 控制值，所以只允许对象或null.</p>
+      
+      <a class="article-more-link" href="/2020/cket8yx280020alvga5954rs0/">　More...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Ruoyu Wang
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="Ruoyu Wang"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['以梦为马，莫负韶华','Input a keyword, return a new world',''],
+    startDelay: 0,
+    typeSpeed: 300,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
