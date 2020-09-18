@@ -75,7 +75,7 @@
        
 <h2 itemprop="name">
   <a class="article-title" href="/2020/cket8yx2b0025alvgbqhw7q0x/"
-    >useBreakPointHook</a
+    >react bp hook</a
   >
 </h2>
   
@@ -110,7 +110,7 @@
       <h1 id="useBreakpoint-Hook-—在React中获取媒体查询断点"><a href="#useBreakpoint-Hook-—在React中获取媒体查询断点" class="headerlink" title="useBreakpoint Hook —在React中获取媒体查询断点"></a>useBreakpoint Hook —在React中获取媒体查询断点</h1><h3 id="怎么测量窗口宽度？"><a href="#怎么测量窗口宽度？" class="headerlink" title="怎么测量窗口宽度？"></a>怎么测量窗口宽度？</h3><p>要获取断点，我们需要测量浏览器的宽度，然后在<code>window</code>对象上获取该宽度。<code>window</code>对象具有两个宽度：<code>outerWidth</code>和<code>innerWidth</code>，这里我们使用<code>innerWidth</code>。</p>
 <p><code>window.innerWidth</code>每当我们调整窗口大小时，我们都会进行测量。</p>
 <p><code>window.addEventListener（&#39;resize&#39;，dosomethingWithWidth）</code></p>
-<p>因此，每当我们调整窗口大小时，<code>resize</code>都会触发该事件并计算<code>innerWidth</code>，但是实现这样的事情存在一个小问题，每当我们重新调整窗口大小时，都会触发回调函数, 回影响运行性能。因此这里我们可以使用节流函数来减少触发频率。关于节流函数详情请看<a href="https://www.wangruoyu.digital/2020/ckd6kbou9000044sj4w3t5vt0/" target="_blank" rel="noopener">节流函数与防抖函数</a>.</p>
+<p>因此，每当我们调整窗口大小时，<code>resize</code>都会触发该事件并计算<code>innerWidth</code>，但是实现这样的事情存在一个小问题，每当我们重新调整窗口大小时，都会触发回调函数, 回影响运行性能。因此这里我们可以使用节流函数来减少触发频率。关于节流函数详情请看<a href="https://wangruoyu.digital/2020/cket8yx23001kalvg8jd1d1ry/">节流函数与防抖函数</a>.</p>
 <h3 id="计算Breakpoint"><a href="#计算Breakpoint" class="headerlink" title="计算Breakpoint"></a>计算Breakpoint</h3><p>基于常见设备类型的Breakpoint</p>
 <ul>
 <li>如果宽度小于320像素，则该设备会特别小，以表示<code>xs</code>。</li>
